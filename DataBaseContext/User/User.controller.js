@@ -4,7 +4,8 @@ createUser = function (req, res, next) {
     var __user = {
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        isAdmin:false
     };
     //console.log(__user);
     User.insertMany([__user], function (err, std) {
@@ -39,10 +40,14 @@ getUser = function(req,res,next){
             })
         }
         else{
+            flag=false;
+            if(rs.isAdmin)
+                flag=true;
             res.json({
                 message:"Record Retrieved",
                 flag:true,
-                name:rs.name
+                name:rs.name,
+                userAdmin:true
             });
         }
     });   

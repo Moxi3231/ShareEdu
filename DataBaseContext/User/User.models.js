@@ -16,6 +16,10 @@ var UserSchema = new schema({
         required:true,
         maxlength:30,
         minlength:7
+    },
+    isAdmin:{
+        type:Boolean,
+        required:false
     }
 });
 

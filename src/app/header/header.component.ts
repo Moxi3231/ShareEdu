@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   public uname:string;
   public loggedIN:boolean=false;
-
+  public isAdmin:boolean=false;
   constructor(private DB:DataBaseService,private Cookie:CookieService) {
 
    }
@@ -30,6 +30,11 @@ export class HeaderComponent implements OnInit {
     {
       this.uname = JSON.parse(this.Cookie.get('User')).name;
       this.loggedIN=true;
+    }
+    var y = JSON.parse(this.Cookie.get('isAdmin'));
+    if(y!=null && y.flag=='true')
+    {
+      this.isAdmin=true;
     }
   }
   public onRSubmit(){
@@ -49,7 +54,12 @@ export class HeaderComponent implements OnInit {
       x.forEach(e =>{
         if(e.flag==true)
         {
-          this.Cookie.set('User',JSON.stringify({email:this.lemail,password:this.lpass,name:e.name}));
+          if(e.userAdmin==true)
+          {
+            this.isAdmin=true;
+            this.Cookie.set('isAdmin','true');
+          }
+        this.Cookie.set('User',JSON.stringify({email:this.lemail,password:this.lpass,name:e.name}));
           this.Cookie.set('LoggedIN','true');
           this.uname = e.name;
           $("#closeL").trigger('click');

@@ -32,15 +32,13 @@
   #Modal {
     position: relative;
   }
-
-  #hMain {
-    top: 0;
+  #hMain{
+    top:0;
     width: 100%;
     z-index: 5;
   }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg bg-dark position-sticky border-bottom border-dark"
-  id="hMain">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg bg-dark position-sticky border-bottom border-dark" id="hMain">
   <a class="navbar-brand" href="home.html">ShareEd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,37 +71,34 @@
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
   </div>
-  <div>
-    <div id="login" *ngIf="!loggedIN">
+  <div id="login" *ngIf="!loggedIN">
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
-        data-target="#exampleModalCenter1">
-        Login
-      </button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter1">
+      Login
+    </button>
 
-      <!-- Modal -->
+    <!-- Modal -->
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
-        data-target="#exampleModalCenter2">
-        SignUp
-      </button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter2">
+      SignUp
+    </button>
 
-      <!-- Modal -->
+    <!-- Modal -->
 
-    </div>
-    <div *ngIf="loggedIN">
-      <h3><span class="badge badge-dark">{{ uname }}</span></h3>
-    </div>
   </div>
+  <div *ngIf="loggedIN">
+   <h3><span class="badge badge-dark">{{ uname }}</span></h3>
+  </div>
+
 </nav>
 
 
 
 <div id="Modal">
-  <div class="modal fade" id="exampleModalCenter2" show="false" tabindex="5" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter2" show="false" tabindex="5" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -113,36 +108,33 @@
             Login
           </button>
         </div>
-        <form (ngSubmit)="onRSubmit()" #regForm="ngForm">
+        <form (ngSubmit)="onRSubmit()" #regForm = "ngForm" >
           <div class="modal-body">
 
 
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="SEmail" [email]="true" name="email" required
-                [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
+              <input type="email" class="form-control" id="SEmail" [email]="true" name="email" required [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
 
-
+         
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" name="password" [(ngModel)]="password" required minlength="7"
-                maxlength="30" id="SPassword" placeholder="Password">
+              <input type="password" class="form-control" name="password" [(ngModel)]="password" required minlength="7" maxlength="30" id="SPassword"  placeholder="Password">
             </div>
 
-            <div class="form-group">
-              <label for="exampleInputName1">Name</label>
-              <input type="text" required minlength="5" #nameC="ngModel" [(ngModel)]="name" class="form-control"
-                id="name" name="name" maxlength="30" placeholder="Enter Name">
-
-            </div>
-
+          <div class="form-group">
+            <label for="exampleInputName1">Name</label>
+            <input type="text" required minlength="5" #nameC ="ngModel" [(ngModel)]="name" class="form-control" id="name"  name="name" maxlength="30" placeholder="Enter Name">
+          
           </div>
-          <div class="modal-footer m-auto">
-            <button type="button" id="closeS" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          
+        </div>
+        <div class="modal-footer m-auto">
+          <button type="button" id="closeS" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
 
-            <button type="submit" [disabled]="!regForm.form.valid" class="btn btn-primary btn-sm">SignUp</button>
-          </div>
+          <button type="submit" [disabled]="!regForm.form.valid" class="btn btn-primary btn-sm">SignUp</button>
+        </div>
         </form>
       </div>
     </div>
@@ -159,21 +151,20 @@
             SignUp
           </button>
         </div>
-        <form (ngSubmit)="onLSubmit()" #loForm="ngForm">
+        <form (ngSubmit)="onLSubmit()" #loForm = "ngForm" > 
           <div class="modal-body">
 
 
 
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" [email]="true" name="lemail" [(ngModel)]="lemail"
-                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <input type="email" class="form-control" [email]="true" name="lemail" [(ngModel)]="lemail" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter email">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="password" [(ngModel)]="lpass" name="lpass" class="form-control" id="exampleInputPassword1"
-                placeholder="Password">
+              <input type="password" [(ngModel)]="lpass" name="lpass" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
 
 

@@ -39,13 +39,13 @@
     z-index: 5;
   }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg bg-dark position-sticky border-bottom border-dark"
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm bg-dark position-sticky border-bottom border-dark"
   id="hMain">
 
   <div *ngIf="isAdmin">
     <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
   </div>
-  &nbsp;
+  &nbsp;&nbsp;
   <a class="navbar-brand" href="/">ShareEd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +96,17 @@
 
   </div>
   <div *ngIf="loggedIN">
-    <h3><span class="badge badge-dark">{{ uname }}</span></h3>
+    <div class="input-group-append">
+      <button type="button" [disabled]="true" class="btn btn-lg  btn-outline-secondary badge badge-info">{{ uname }}</button>
+      <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu w-100 bg-light align-content-center shadow-sm" >
+        <a class="dropdown-item text-center btn-link btn-light" href="#">{{uname}}(Details)</a>
+        <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item  text-center btn-link btn-light" href="/Home" (click)="logout()">Logout</a>
+      </div>
+    </div>
   </div>
 
 </nav>
@@ -104,12 +114,12 @@
 
 <div id="mySidenavR" class="sidenavR" >
   <a href="javascript:void(0)" class="closebtn" on-click="closeNav()">&times;</a>
-  <a href="/CreateCategories">Create Categories</a>
-  <a href="#">Services</a>
+  <a href="/CreateCategories">Categories</a>
+  <a href="/Video">Videos</a>
   <a href="#">Clients</a>
   <a href="#">Contact</a>
 </div>
-
+<br>
 <div id="Modal">
   <div class="modal fade" id="exampleModalCenter2" show="false" tabindex="5" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as $ from 'jquery';
+import { DataBaseService } from '../data-base.service';
+import { CookieService } from 'ngx-cookie-service';
+import {Router} from '@angular/router';
+import { Category } from './Category';
 @Component({
   selector: 'app-create-categories',
   templateUrl: './create-categories.component.html',
@@ -7,9 +11,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCategoriesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private DB: DataBaseService, private Cookie: CookieService,private router:Router) { }
+  public uname:string;
+  public loggedIN:boolean=false;
+  public isAdmin=false;
 
+  public tempFlag=false;
+  public cname:string;
+  public clist:Category[];
   ngOnInit() {
+    var x = this.Cookie.get('LoggedIN');
+    if (x == 'true') {
+      this.uname = JSON.parse(this.Cookie.get('User')).name;
+      this.loggedIN = true;
+    }
+    var y = this.Cookie.get('isAdmin');
+    if (y=='true') {
+      this.isAdmin = true;
+    }
+    else
+    {
+      this.router.navigate(['/Home']);
+    }
+    this.DB.getCategories().subscribe(x=>this.clist=x);
+
+  }
+  
+  public onSubmit(name:string)
+  { 
+    var x = this.DB.createCategory(name);
+    x.forEach(y=>{
+      
+      if(y.message.code)
+      {
+        this.tempFlag=true;
+        return;
+      }
+      else
+      {
+        location.reload();
+      }
+    });
+    //location.reload();
+  }
+  public delete(name:String)
+  {
+    var x = this.DB.deleteCategory(name);
+    x.forEach(y=>{
+      console.log(y);
+    });
+    location.reload();
   }
 
 }

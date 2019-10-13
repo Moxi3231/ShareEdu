@@ -5,9 +5,10 @@ var CategorySchema = new schema({
         type:String,
         required:true,
         maxlength:30,
-        minlength:2
+        minlength:2,
+        unique:true
     }
 });
 
-var UserModel = mon.model('User',UserSchema);
-module.exports = UserModel;
+var CategoryModel = mon.model('Category',CategorySchema);
+module.exports = CategoryModel;

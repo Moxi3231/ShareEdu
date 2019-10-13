@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   public lpass: string;
   public __obj: any;
 
+
+  public tempFlag:boolean=true;
   public uname: string;
   public loggedIN: boolean = false;
   public isAdmin: boolean = false;
@@ -34,6 +36,12 @@ export class HeaderComponent implements OnInit {
     if (y=='true') {
       this.isAdmin = true;
     }
+  }
+  public logout()
+  {
+    this.isAdmin=false;
+    this.loggedIN=false;
+    this.Cookie.deleteAll();
   }
   public onRSubmit() {
     var x = this.DB.addUser(this.name, this.password, this.email);
@@ -65,7 +73,16 @@ export class HeaderComponent implements OnInit {
   }
   public openNav() {
     //document.getElementById("mySidenav").style.width = "250px";
+    if(this.tempFlag)
+    {
     $("#mySidenavR").css("width","450px");
+      this.tempFlag=false;
+    }
+    else
+    {
+      this.closeNav();
+      this.tempFlag=true;
+    }
   }
   
   public closeNav() {

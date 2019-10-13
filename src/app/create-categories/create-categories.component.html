@@ -1,1 +1,24 @@
-<p>create-categories works!</p>
+<div class="card card-body shadow-sm" style="z-index: 2;" id="sticky">
+    <div class="form-group">
+        <label for="name" class="text-center">Category</label>
+        <input type="text" class="form-control" #cname required minlength="3" maxlength="30"  placeholder="Enter Category">
+        <div *ngIf="tempFlag" class="text-center text-justify">
+            Cannot insert this [{{cname.value}}] because it already exists!
+        </div>
+    </div>
+    <button type="button" (click)="onSubmit(cname.value)"  class="btn btn-outline-secondary">Submit</button>
+</div>
+
+<hr>
+<h4 class="display-4 text-center">Category List</h4>
+<hr>
+<div class="card-deck ui-widget-shadow">
+<div class="card" *ngFor="let s of clist;index as i" style="z-index: 1;">
+            <div class="card-header">
+                    <h6 class="text-capitalize text-justify text-center"> {{i}}. {{s.name}} </h6>
+            </div>       
+            <div class="card-body">
+                <button class="btn btn-danger w-100" (click)="delete(s.name)">Delete</button>
+            </div>
+</div>
+</div>

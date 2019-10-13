@@ -3,7 +3,7 @@ const exp = require('express');
 const app = exp();
 const mongoose = require('mongoose');
 var  userRoutes = require('./User/User.controller');
-
+var categoryRoutes = require('./Categories/Category.controller');
 var router = exp.Router();
 //To extract html content
 
@@ -46,3 +46,4 @@ app.listen(7762,function(){
 
 app.use('/conDB',router);
 userRoutes(router);
+categoryRoutes(router);

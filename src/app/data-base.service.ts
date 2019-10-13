@@ -31,4 +31,20 @@ export class DataBaseService {
     };
     return this.http.post<any>(`${this.uri}/getUser`,obj);
   }
+
+  createCategory(name:string)
+  {
+    const obj ={name:name};
+    return this.http.post<any>(`${this.uri}/cCategory`,obj);
+  }
+
+  getCategories()
+  {
+    return this.http.post<any>(`${this.uri}/getCategories`,{});
+  }
+
+  deleteCategory(name:String)
+  {
+    return this.http.post<any>(`${this.uri}/deleteCategory`,{name:name});
+  }
 }

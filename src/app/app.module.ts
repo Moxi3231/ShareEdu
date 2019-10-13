@@ -10,13 +10,15 @@ import { DataBaseService } from './data-base.service';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateCategoriesComponent } from './create-categories/create-categories.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    CreateCategoriesComponent
+    CreateCategoriesComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

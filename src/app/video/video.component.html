@@ -1,0 +1,56 @@
+<form class="card card-body w-75 m-auto" #vReg="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="FileName">Display Name For File</label>
+        <input type="text" required class="form-control" id="FileName" [(ngModel)]="dname" name="dname"
+            #dname_form="ngModel" placeholder="Enter Display Name">
+    </div>
+    <div class="form-group">
+        <label for="Desc">Description</label>
+        <textarea rows="5" required class="form-control" id="Desc" [(ngModel)]="desc" name="desc" #desc_form="ngModel"
+            placeholder="Enter Description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Select Course</label>
+        <select class="form-control" id="course" required [(ngModel)]="course" name="course" #course_form="ngModel">
+            <option *ngFor="let s of clist" value="{{ s.name }}">{{ s.name }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="File">Upload File</label>
+        <input type="file" required class="form-control" id="File" (change)="upload($event.target.files)" />
+        <input type="hidden" value="{{ filename }}">
+        <label *ngIf="fileUE">Retry to upload file.</label>
+    </div>
+    <div>
+        <button type="submit" [disabled]="!vReg.form.valid || fileUploaded"
+            class="btn btn-outline-primary">Submit</button>
+    </div>
+</form>
+
+
+<hr>
+
+<h3 class="display-3 text-center text-justify">Video</h3>
+<hr>
+<div class="card w-75 m-auto">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Path</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of vData;index as i">
+                <th scope="row">{{i}}/th>
+                <td>{{s.name}}</td>
+                <td>{{s.path}}</td>
+                <td>{{s.description}}</td>
+                <td>{{s.category}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

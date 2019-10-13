@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.5",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
+    "formidable": "^1.2.1",
     "jquery": "^3.4.1",
     "mongoose": "^5.7.4",
     "ngx-cookie-service": "^2.2.0",

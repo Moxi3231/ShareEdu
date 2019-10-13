@@ -47,4 +47,12 @@ export class DataBaseService {
   {
     return this.http.post<any>(`${this.uri}/deleteCategory`,{name:name});
   }
+
+  uploadPath(name:string,path:string,desc:string,cat:string){
+    return this.http.post<any>(`${this.uri}/uploadPath`,{name:name,path:path,description:desc,category:cat});
+  }
+
+  getPaths(){
+    return this.http.post<any>(`${this.uri}/getPaths`,{});
+  }
 }

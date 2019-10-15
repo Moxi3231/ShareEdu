@@ -6,10 +6,11 @@ import * as $ from 'jquery';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
+    $("#contentBack").remove();
     var nline = document.createElement('br');
     var cur = document.createElement('span');
     var text = "TELL ME AND I FORGET.\n TEACH ME AND I REMEMBER.\n INVOLVE ME AND I LEARN.\n";

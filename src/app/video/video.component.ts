@@ -29,6 +29,7 @@ export class VideoComponent implements OnInit {
   public dname:string='';
   public desc:string='';
   public course:string='';
+  public nfile:File[];
   
   public fileData: File = null;
   
@@ -36,6 +37,7 @@ export class VideoComponent implements OnInit {
 
   public vData:Video[];
   ngOnInit() {
+    $("#contentBack").remove();
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
       this.uname = JSON.parse(this.Cookie.get('User')).name;
@@ -60,13 +62,12 @@ export class VideoComponent implements OnInit {
     this.filename=files[0].name;
     var formData = new FormData();
     Array.from(files).forEach(f => formData.append('file',f))
-    
-    this.http.post<any>('http://localhost:7762/file2upload', formData);
+    this.http.post<any>('http://localhost:7762/file2upload', formData).subscribe(x=>{console.log("Done");});
     this.fileUploaded=false;
-    console.log("Done");
   }
 
   onSubmit() {
+    
     var x = this.DB.uploadPath(this.dname,'../../assets/Video/'+this.filename,this.desc,this.course);
     x.forEach(y=>{
       if(y.message.code)

@@ -20,10 +20,14 @@ export class CreateCategoriesComponent implements OnInit {
   public cname:string;
   public clist:Category[];
   ngOnInit() {
+    $("#contentBack").remove();
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
       this.uname = JSON.parse(this.Cookie.get('User')).name;
       this.loggedIN = true;
+    }
+    else{
+      this.router.navigate(['/Home']);
     }
     var y = this.Cookie.get('isAdmin');
     if (y=='true') {

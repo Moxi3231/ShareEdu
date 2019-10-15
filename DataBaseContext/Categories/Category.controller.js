@@ -39,7 +39,7 @@ getCategories = function(req,res,next){
 }
 
 deleteCategory = function(req,res,next){
-    Category.remove({name:req.body.name},function(err,rs){
+    Category.deleteMany({name:req.body.name},function(err,rs){
         if(err)
         {
             res.json({message:err});

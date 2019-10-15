@@ -9,6 +9,7 @@ var fs = require('fs');
 var userRoutes = require('./User/User.controller');
 var categoryRoutes = require('./Categories/Category.controller');
 var videoRoutes = require('./Video/Video.controller');
+var usercategoryroutes = require('./UserCategory/UserCategory.controller');
 
 
 //Router
@@ -25,13 +26,13 @@ app.post('/file2upload', function (req, res) {
         var oldpath = files.file.path;
         var npath = __dirname + '/../src/assets/Video/' + files.file.name;
         fs.copyFile(oldpath, npath, function (err) {
-            console.log(npath);
+            //console.log(npath);
             if (err) {
                 console.error(err);
                 res.send({message:"Not Uploaded",flag:false});
             }
             else {
-                console.log("FileUploded");
+                //console.log("FileUploded");
                 res.send({message:"Uploaded",flag:true});
             }
         });
@@ -78,3 +79,4 @@ app.use('/conDB', router);
 userRoutes(router);
 categoryRoutes(router);
 videoRoutes(router);
+usercategoryroutes(router);

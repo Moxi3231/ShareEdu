@@ -8,6 +8,7 @@ createUser = function (req, res, next) {
         isAdmin:false
     };
     //console.log(__user);
+
     User.insertMany([__user], function (err, std) {
         if (err) {
             console.log("Some Error Occured: " + err);
@@ -40,14 +41,14 @@ getUser = function(req,res,next){
             })
         }
         else{
-            flag=false;
+            var flag=false;
             if(rs.isAdmin)
                 flag=true;
             res.json({
                 message:"Record Retrieved",
                 flag:true,
                 name:rs.name,
-                userAdmin:true
+                userAdmin:flag
             });
         }
     });   

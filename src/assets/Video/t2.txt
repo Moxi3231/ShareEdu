@@ -1,0 +1,69 @@
+
+Initial-
+
+GRAPH
+0 10 12 0 
+0 0 15 12 
+0 0 0 8 
+0 0 0 0 
+
+DFS-Path : <--->0(0)--->1(1)--->2(2)-->3	-->3	>
+Range < 0  1  2  3 >
+
+Filtered-Path: < 0  1  2  3 >		Length: 4
+(0)(1)(2)
+BCapacity: 8
+(0)-(1)
+(1)-(2)
+(2)-(3)
+Iteration (0) UGraph
+
+GRAPH
+0 2 12 0 
+8 0 7 12 
+0 8 0 0 
+0 0 8 0 
+
+		---Total Flow = 8----
+
+DFS-Path : <--->0(0)--->1(1)--->2(2)-->3	--->2(1)>
+Range < 0  1  -1  3 >
+
+Filtered-Path: < 0  1  3  0 >		Length: 3
+(0)(1)
+BCapacity: 2
+(0)-(1)
+(1)-(3)
+Iteration (1) UGraph
+
+GRAPH
+0 0 12 0 
+2 0 7 10 
+0 8 0 0 
+0 2 8 0 
+
+		---Total Flow = 10----
+
+DFS-Path : <--->0(0)--->2(1)--->1(2)-->3	>
+Range < 0  2  1  4 >
+
+Filtered-Path: < 0  2  1  3 >		Length: 4
+(0)(2)(1)
+BCapacity: 8
+(0)-(2)
+(2)-(1)
+(1)-(3)
+Iteration (2) UGraph
+
+GRAPH
+0 0 4 0 
+2 0 8 2 
+8 0 0 0 
+0 8 8 0 
+
+		---Total Flow = 18----
+
+DFS-Path : <--->0(0)--->2(1)>
+Range < 0  -1  -1  -1 >
+
+Total Flow (18)

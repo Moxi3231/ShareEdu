@@ -11,6 +11,9 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateCategoriesComponent } from './create-categories/create-categories.component';
 import { VideoComponent } from './video/video.component';
+import { CategoryVideoComponent } from './category-video/category-video.component';
+import { SubscribeCategoryComponent } from './subscribe-category/subscribe-category.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { VideoComponent } from './video/video.component';
     HomeComponent,
     HeaderComponent,
     CreateCategoriesComponent,
-    VideoComponent
+    VideoComponent,
+    CategoryVideoComponent,
+    SubscribeCategoryComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

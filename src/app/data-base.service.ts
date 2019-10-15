@@ -3,6 +3,7 @@ import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { Observable } from 'rxjs';
 import { EmailValidator } from '@angular/forms';
+import { UserCategory } from './subscribe-category/UserCategory';
 @Injectable({
   providedIn: 'root'
 })
@@ -54,5 +55,27 @@ export class DataBaseService {
 
   getPaths(){
     return this.http.post<any>(`${this.uri}/getPaths`,{});
+  }
+
+  getUserCategories(email:string)
+  {
+    return this.http.post<any>(`${this.uri}/getUserCategories`,{email:email});
+  }
+  checkUserCategory(email:string,category:string)
+  {
+    return this.http.post<UserCategory[]>(`${this.uri}/checkUserCategory`,{email:email,category:category}); 
+  }
+  subscribeCategoryForUser(email:string,category:string)
+  {
+    return this.http.post<any>(`${this.uri}/cUserCategory`,{email:email,category:category});
+  }
+  deleteCategoryForUser(email:string,category:string)
+  {
+    return this.http.post<any>(`${this.uri}/deleteUserCategory`,{email:email,category:category});
+  }
+
+  getPathByCategory(category:string)
+  {
+    return this.http.post<any>(`${this.uri}/getPathByCategory`,{category:category});
   }
 }

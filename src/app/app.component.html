@@ -2,13 +2,36 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-</head>
-<body >
-    <app-header></app-header> 
-    <router-outlet>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    </router-outlet>
-</body>
+</head>
+<button id="errTrigger" onclick="showToast()"></button>
+<app-header></app-header>
+<router-outlet>
+
+</router-outlet>
+
+<div class="div1" id="contentBack"
+    style="top:0px; background-color: rgb(69,195,184);background-position-x:200px ; background-image: url('../assets/Image/Edu.jpg'); background-repeat: no-repeat;">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <a class="btn btn-outline-info btn-block btn-lg text-white" href="/Home">Home</a>
+
+</div>
+
+
+    <div id="err" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="3000" style="position: fixed; bottom: 10px; right: 10px;">
+        <div class="toast-header">
+            <img height="25px" width="25px" src="../assets/Image/ShareEd.png" class="rounded mr-2" alt="...">
+            <strong class="mr-auto" id="errHeading"></strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body" id="errContent">
+
+        </div>
+    </div>
+
 </html>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { DataBaseService } from '../data-base.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -22,20 +23,28 @@ export class HeaderComponent implements OnInit {
   public uname: string;
   public loggedIN: boolean = false;
   public isAdmin: boolean = false;
-  constructor(private DB: DataBaseService, private Cookie: CookieService) {
+  constructor(private DB: DataBaseService, private Cookie: CookieService,private router:Router) {
 
   }
 
   ngOnInit() {
+    //$("#contentBack").remove();
+    $("#errTrigger").hide();
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
       this.uname = JSON.parse(this.Cookie.get('User')).name;
       this.loggedIN = true;
     }
+    else{
+      this.router.navigate(['/Home']);
+    }
     var y = this.Cookie.get('isAdmin');
     if (y=='true') {
       this.isAdmin = true;
     }
+
+    //alert();
+   // $("#errTrigger").trigger('click');
   }
   public logout()
   {
@@ -67,6 +76,7 @@ export class HeaderComponent implements OnInit {
         this.uname = e.name;
         $("#closeL").trigger('click');
         this.loggedIN = true;
+        //$("#vidBtn").css('disabled','true');
         return;
       }
     });

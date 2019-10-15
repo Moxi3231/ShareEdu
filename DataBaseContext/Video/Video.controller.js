@@ -7,6 +7,7 @@ uploadPath = function (req, res, next) {
         description: req.body.description,
         category:req.body.category
     };
+    console.log(req.body);
     //console.log(__user);
     Video.insertMany([__video], function (err, std) {
         if (err) {
@@ -39,8 +40,22 @@ getPaths = function(req,res,next){
     });   
 }
 
-
+getPathByCategory =function(req,res,next){
+    Video.find({category:req.body.category},function(err,rs){
+        if(err || rs==[]){
+            res.json({
+                message:"Record not found",
+                flag:false
+            });
+        }
+        else{
+            res.json({record:rs,
+            flag:true});
+        }
+    });
+}
 module.exports = function (router) {
     router.post('/uploadPath', uploadPath);
     router.post('/getPaths',getPaths);
+    router.post('/getPathByCategory',getPathByCategory);
 }

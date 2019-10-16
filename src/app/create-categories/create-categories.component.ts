@@ -43,9 +43,17 @@ export class CreateCategoriesComponent implements OnInit {
   
   public onSubmit(name:string)
   { 
+    if(name=='')
+    {
+      $('#errHeading').html('Empty Category!');
+      $("#errContent").addClass("alert alert-danger");
+      $("#errContent").html("Category cannont be empty");
+      $("#errTrigger").trigger('click');
+      return;
+    }
     var x = this.DB.createCategory(name);
     x.forEach(y=>{
-      
+      console.log(y);
       if(y.message.code)
       {
         this.tempFlag=true;

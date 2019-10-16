@@ -41,6 +41,7 @@ getUser = function(req,res,next){
             })
         }
         else{
+            //console.log(rs);
             var flag=false;
             if(rs.isAdmin)
                 flag=true;

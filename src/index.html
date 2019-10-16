@@ -26,17 +26,22 @@
       $("#" + id).collapse('toggle');
     }
     function showToast(){
-      console.log('i am working');
+      //$("#err").show();
+      //console.log('i am working');
       $("#err").toast('show');
+      //$("#err").slideDown("1000");
+      //$("#err").hide(10000);
     }
 
     $(function () {
+      //$("#err").hide();
+      //console.log($(window).height(),$(window).width());
       $('.div1').css({ height: $(window).innerHeight() });
-
+      $('.div1').css({width: $(window).innerWidth() });
 
       $(window).resize(function () {
         $('.div1').css({ height: $(window).innerHeight() });
-
+        $('.div1').css({width: $(window).innerWidth() });
       });
     });
   </script>

@@ -4,6 +4,8 @@
   <button class="btn  btn-outline-dark" (click)="showAvail()"> Availed Subscription</button>
   <button class="btn   btn-outline-dark" (click)="shownotAvail()"> Available Subscription</button>
 </div>
+<br>
+<br>
 <div class="container container-fluid" *ngIf="availFlag">
   <div class="card-deck" *ngIf="userCatList.length!=0">
   <div class="card" *ngFor="let bn of userCatList">

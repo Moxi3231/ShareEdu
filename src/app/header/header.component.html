@@ -86,7 +86,7 @@
     </button>
 
     <!-- Modal -->
-    
+
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalCenter2">
       SignUp
@@ -97,24 +97,27 @@
   </div>
   <div *ngIf="loggedIN">
     <div class="input-group-append">
-      <button type="button" [disabled]="true" class="btn btn-lg  btn-outline-info  badge-info border-0" style="border:none;">
+      <button type="button" [disabled]="true" class="btn btn-lg  btn-outline-info  badge-info border-0"
+        style="border:none;">
         {{ uname }}
       </button>
-      <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" style="border: none;"
+        data-toggle="collapse" data-target="#aDetails" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only">Toggle Dropdown</span>
       </button>
-      <div class="dropdown-menu w-100 bg-light align-content-center shadow-sm" >
-        <a class="dropdown-item text-center btn-link btn-light" href="/AccountDetails">Account Details</a>
-        <div role="separator" class="dropdown-divider"></div>
-        <a class="dropdown-item  text-center btn-link btn-light" href="/Home" (click)="logout()">Logout</a>
-      </div>
+
     </div>
   </div>
 
 </nav>
 
+<div class="collapse w-100 m-auto shadow-lg bg-light position-fixed "style="z-index:6;" id="aDetails">
+  <a class="btn-link btn btn-outline-light  btn-block text-center " style="border: none; padding: 0;" href="/AccountDetails">Account Details</a>
+  <div role="separator" class="dropdown-divider bg-light"></div>
+  <a class="btn-link btn btn-block  btn-outline-light text-center" style="border: none; padding: 0;" href="/Home" (click)="logout()">Logout</a>
+</div>
 
-<div id="mySidenavR" class="sidenavR" >
+<div id="mySidenavR" class="sidenavR">
   <a href="javascript:void(0)" class="closebtn" on-click="closeNav()">&times;</a>
   <a href="/ACreateCategories">Categories</a>
   <a href="/AVideo">Videos</a>
@@ -123,46 +126,61 @@
 </div>
 
 <div id="Modal">
-  <div class="modal fade" id="exampleModalCenter2" show="false" tabindex="5" role="dialog"
+  <div class="modal fade shadow-lg" id="exampleModalCenter2" show="false" tabindex="5" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h6 class="modal-title" id="exampleModalCenterTitle">SignUp</h6>
+        <div class="modal-header" >
+          <h6 class="modal-title font-italic" id="exampleModalCenterTitle">Registration</h6>
           <button type="button" id="openL" class="btn btn-light btn-link" data-dismiss="modal" data-toggle="modal"
             data-target="#exampleModalCenter1">
-            Login
+            Switch To Login
           </button>
         </div>
         <form (ngSubmit)="onRSubmit()" #regForm="ngForm">
-          <div class="modal-body">
-
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="SEmail" [email]="true" name="email" required
-                [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
+          <div class="row">
+            <div class="col-6">
+              <img id="imgZIO" class="w-100 h-100" src="../../assets/Image/Registration.jpg">
             </div>
+            <div class="col-6">
+              <div class="modal-body">
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="SEmail" [email]="true" name="email" required
+                    [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
 
 
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" name="password" [(ngModel)]="password" required minlength="7"
-                maxlength="30" id="SPassword" placeholder="Password">
+                <div class="form-group row-2">
+                  <label for="exampleInputPassword1 col-6">Password</label>
+                 
+
+                    <input type="password" class="form-control " name="password" [(ngModel)]="password" required
+                    minlength="7" maxlength="30" id="SPassword" placeholder="Password">
+                  <input type="password" class="form-control" name="cpassword" (change)="change()" [(ngModel)]="cpassword" required
+                    minlength="7" maxlength="30" id="cSPassword" placeholder="Confirm Password">
+                  <label class="alert alert-danger w-100 " *ngIf="pChange">
+                    Password Must be same
+                  </label>
+                  </div>
+
+                <div class="form-group">
+                  <label for="exampleInputName1">Name</label>
+                  <input type="text" required minlength="5" #nameC="ngModel" [(ngModel)]="name" class="form-control"
+                    id="name" name="name" maxlength="30" placeholder="Enter Name">
+
+                </div>
+
+              </div>
+              <div class="modal-footer m-auto align-items-center text-center m-auto">
+                <button type="button" id="closeS" class="btn btn-block btn-secondary btn-sm m-auto"
+                  data-dismiss="modal">Close</button>
+
+                <button type="submit" [disabled]="!regForm.form.valid"
+                  class="btn btn-primary btn-sm btn-block m-auto">SignUp</button>
+              </div>
             </div>
-
-            <div class="form-group">
-              <label for="exampleInputName1">Name</label>
-              <input type="text" required minlength="5" #nameC="ngModel" [(ngModel)]="name" class="form-control"
-                id="name" name="name" maxlength="30" placeholder="Enter Name">
-
-            </div>
-
-          </div>
-          <div class="modal-footer m-auto">
-            <button type="button" id="closeS" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-
-            <button type="submit" [disabled]="!regForm.form.valid" class="btn btn-primary btn-sm">SignUp</button>
           </div>
         </form>
       </div>
@@ -171,38 +189,46 @@
 
   <div class="modal fade" id="exampleModalCenter1" tabindex="5" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title" id="exampleModalCenterTitle">Login</h6>
+          <h6 class="modal-title font-italic" id="exampleModalCenterTitle">Login</h6>
           <button type="button" class="btn btn-link btn-light" data-dismiss="modal" data-toggle="modal"
             data-target="#exampleModalCenter2">
-            SignUp
+            Switch To SignUp
           </button>
         </div>
         <form (ngSubmit)="onLSubmit()" #loForm="ngForm">
-          <div class="modal-body">
-
-
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" [email]="true" name="lemail" [(ngModel)]="lemail"
-                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <div class="row">
+            <div class="col-6">
+              <img id="imgZIO" class="w-100 h-100" src="../../assets/Image/Registration.jpg">
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" [(ngModel)]="lpass" name="lpass" class="form-control" id="exampleInputPassword1"
-                placeholder="Password">
+            <div class="col-6">
+              <div class="modal-body">
+
+
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email"  class="form-control" [email]="true" name="lemail" [(ngModel)]="lemail"
+                    id="exampleInputEmail1" required aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" [(ngModel)]="lpass" required name="lpass" class="form-control"
+                    id="exampleInputPassword1" placeholder="Password">
+                </div>
+
+
+
+              </div>
+              <div class="modal-footer m-auto text-center">
+                <button type="button" id="closeL" class="btn btn-sm btn-block btn-secondary m-auto" data-dismiss="modal">Close</button>
+                <button type="submit" [disabled]="!loForm.form.valid" class="btn btn-block btn-sm btn-primary m-auto">Login</button>
+              </div>
             </div>
-
-
-
-          </div>
-          <div class="modal-footer m-auto">
-            <button type="button" id="closeL" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" [disabled]="!loForm.form.valid" class="btn btn-sm btn-primary">Login</button>
           </div>
         </form>
       </div>

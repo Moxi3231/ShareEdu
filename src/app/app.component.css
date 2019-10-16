@@ -23,18 +23,18 @@
     /* Standard syntax */
     @keyframes zoom {
         0% {
-            transform: scale(1,1);
+            transform: scale(0.9,0.9);
         }
         50% {
-            transform: scale(1.1,1.1);
+            transform: scale(1,1);
         }
         100%{
-            transform: scale(1,1);
+            transform: scale(0.9,0.9);
         }
     }
     
     
-    #contentBack {
+    #contentBack,#imgZIO {
         -webkit-animation: zoom 10s; /* Chrome, Safari, Opera */
         animation: zoom 10s;
         animation-iteration-count: infinite;

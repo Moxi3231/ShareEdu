@@ -49,6 +49,8 @@ app.use(exp.urlencoded({ extended: true })); // to support URL-encoded bodies
 
 function DBCon() {
     mongoose.connect('mongodb://localhost:27017/ShareEduDB', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+    //mongodb+srv://DB3231:BD3231@cluster1-eh8nt.mongodb.net/test?retryWrites=true&w=majority
+    //mongoose.connect('mongodb+srv://DB3231:DB3231@cluster1-eh8nt.mongodb.net/ShareEduDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
     mongoose.connection.on('connected', function () {
         console.log("Connected to ShareEduDB");
     });

@@ -51,7 +51,7 @@ saveNote = function (req, res, next) {
         Name: req.body.name,
         Email: req.body.email
     };
-    Notes.update(__note, { Content: req.body.content }, function (err, data) {
+    Notes.updateOne(__note, { Content: req.body.content }, function (err, data) {
         if (err) {
             res.json({ message: "Some error occured", flag: false });
         }

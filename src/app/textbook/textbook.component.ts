@@ -40,7 +40,7 @@ export class TextbookComponent implements OnInit {
 
   ngOnInit() {
     $("#contentBack").remove();
-    $("body").css({ background: 'linear-gradient(to right,#83a4d4, #b6fbff)'});
+   // $("body").css({ background: 'linear-gradient(to right,#83a4d4, #b6fbff)'});
 
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
@@ -67,6 +67,7 @@ export class TextbookComponent implements OnInit {
   }
   updatePage(){
     this.tempFlag=true;
+    this.noTextbook=false;
     this.selectedTextbook=[];
     this.textBooks.forEach(book=>{
       if(book.Course==this.pageCourse){

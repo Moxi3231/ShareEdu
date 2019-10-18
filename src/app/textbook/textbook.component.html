@@ -1,7 +1,7 @@
 <br>
 <div class=" container-fluid bg-transparent border border-info shadow-lg">
     <label class="form-text text-truncate text-center display-4">Select Course</label>
-    <select class="form-control w-25 m-auto" required [(ngModel)]="pageCourse" (change)="updatePage()">
+    <select class="form-control custom-select-lg w-25 m-auto" required [(ngModel)]="pageCourse" (change)="updatePage()">
         <option *ngFor="let item of clist" value="{{item.category}}">{{item.category}}</option>
     </select>
     <hr>

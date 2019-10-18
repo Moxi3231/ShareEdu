@@ -20,6 +20,7 @@ export class CreateCategoriesComponent implements OnInit {
   public cname:string;
   public clist:Category[];
   ngOnInit() {
+    $("body").css({ background: 'linear-gradient(to right, #abbaab 0%, #ffffff 100%)'});
     $("#contentBack").remove();
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {

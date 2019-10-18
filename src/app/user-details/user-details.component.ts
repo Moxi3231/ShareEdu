@@ -46,11 +46,14 @@ export class UserDetailsComponent implements OnInit {
     }
     else {
       //     console.log("Asd");
+      this.isValid = true;
+      //console.log("Changef to true");
     }
   }
 
   submit() {
-    if (this.isValid) {
+    //console.log(this.isValid);
+    if (!this.isValid) {
       $("#errHeading").html("Cannot Save!");
       // $("#errHeading").addClass("alert alert-danger");
       $("#errContent").addClass("alert alert-danger");
@@ -58,8 +61,26 @@ export class UserDetailsComponent implements OnInit {
       $("#errTrigger").trigger('click');
     }
 
-    else{
-      
+    else {
+      var response = this.DB.updateUser(this.email, this.password, this.uname);
+      response.forEach(data => {
+        if (data.flag) {
+          $("#errHeading").html("Saved!");
+          // $("#errHeading").addClass("alert alert-danger");
+          $("#errContent").addClass("alert alert-success");
+          $("#errContent").html("Updated successfully<br>Refresh page to observe changes");
+          $("#errTrigger").trigger('click');
+          this.Cookie.set('User', JSON.stringify({ email: this.email, password: this.password, name: this.uname }));
+        }
+        else {
+          $("#errHeading").html("Try again later!");
+          // $("#errHeading").addClass("alert alert-danger");
+          $("#errContent").addClass("alert alert-danger");
+          $("#errContent").html("Could not update");
+          $("#errTrigger").trigger('click');
+        }
+      });
+
     }
   }
 }

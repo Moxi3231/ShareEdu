@@ -30,13 +30,18 @@ export class VideoComponent implements OnInit {
   public desc:string='';
   public course:string='';
   public nfile:File[];
-  
+  public enableButton:Boolean=true;
   public fileData: File = null;
   
   public isError:boolean=false;
 
+  public percentDone:Number;
+
+  private files:File[];
+
   public vData:Video[];
   ngOnInit() {
+    $("body").css({ background: 'linear-gradient(to right, #abbaab 0%, #ffffff 100%)'});
     $("#contentBack").remove();
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
@@ -55,19 +60,32 @@ export class VideoComponent implements OnInit {
   }
 
   upload(files: File[]){
-    this.uploadAndProgress(files);
+   this.files=files;
+   this.enableButton = false;
   }
   uploadAndProgress(files: File[]){
     //console.log(files[0].name);
-    this.filename=files[0].name;
+    
+   // console.log(this.filename);
     var formData = new FormData();
-    Array.from(files).forEach(f => formData.append('file',f))
-    this.http.post<any>('http://localhost:7762/file2upload', formData).subscribe(x=>{console.log("Done");});
-    this.fileUploaded=false;
+    Array.from(files).forEach(f => formData.append('file',f));
+    this.http.post<any>('http://localhost:7762/file2upload', formData, {reportProgress: true, observe: 'events'})
+    .subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.percentDone = Math.round(100 * event.loaded / event.total);
+        $("#pbar").css({width:this.percentDone.toLocaleString()+'%'});
+      } else if (event instanceof HttpResponse) {
+        console.log('Failure');
+        this.fileUploaded = true;
+        this.fileUE=true;
+      }
+  });
+  
+   // this.fileUploaded=false;
   }
 
   onSubmit() {
-    
+    this.filename=this.files[0].name;
     var x = this.DB.uploadPath(this.dname,'../../assets/Video/'+this.filename,this.desc,this.course);
     x.forEach(y=>{
       if(y.message.code)
@@ -77,7 +95,31 @@ export class VideoComponent implements OnInit {
       }
       else
       {
+        this.uploadAndProgress(this.files);
+        this.ngOnInit();
         return;
+      }
+    });
+  }
+
+  public deletePath(name:string){
+    var x = this.DB.deletePathByName(name);
+    x.forEach(data=>{
+      if(data.flag)
+      {
+        $("#errHeading").html("Deleted Succesfully!!");
+        $("#errContent").html("Deleted video with name: "+name);
+        $("#errContent").addClass("alert alert-success");
+        $("#errTrigger").trigger('click');
+        //deleted succesfully
+        this.ngOnInit();
+      }
+      else{
+        //cannot delete
+        $("#errHeading").html("Couldn't Delete!!");
+        $("#errContent").html("Some Error Occurred");
+        $("#errContent").addClass("alert alert-danger");
+        $("#errTrigger").trigger('click');
       }
     });
   }

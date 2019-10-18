@@ -34,17 +34,17 @@
                                 {{video.name}}
                             </div>
                             <div class="card-body w-100">
-                                <video controls class="w-100">
+                                <video controls class="w-100" preload="none" poster="../../assets/Image/VideoIcon.jpg">
                                     <source src="{{video.path}}" type="video/mp4">
                                 </video>
-                                <button class="btn btn-outline-primary btn-block btn-sm" type="button" value="{{video.name}}"
+                                <button class="btn btn-outline-primary btn-block btn-sm" type="button" value="{{video.name.replace(' ','')}}"
                                     onclick="toogleDescription(event.target.value)" aria-expanded="false"
                                     aria-controls="collapseExample">
                                     Description
                                 </button>
 
                             </div>
-                            <div class="card-footer collapse" id="{{ video.name }}">
+                            <div class="card-footer collapse" id="{{ video.name.replace(' ','') }}">
 
                                 <p class="text-center text-justify text-capitalize"> {{video.description}} </p>
                             </div>

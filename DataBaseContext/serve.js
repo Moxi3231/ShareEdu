@@ -4,14 +4,14 @@ const app = exp();
 const mongoose = require('mongoose');
 var formidable = require('formidable');
 var fs = require('fs');
-
+var cors = require('cors');
 //Routes
 var userRoutes = require('./User/User.controller');
 var categoryRoutes = require('./Categories/Category.controller');
 var videoRoutes = require('./Video/Video.controller');
 var usercategoryroutes = require('./UserCategory/UserCategory.controller');
-
-
+var TextBookroutes = require('./Textbook/Textbook.controller');
+var noteRoutes = require('./Notes/Notes.controller');
 //Router
 var router = exp.Router();
 
@@ -19,12 +19,32 @@ var router = exp.Router();
 var bodyParser = require('body-parser');
 
 //console.log(__dirname);
-
+app.use(cors());
 app.post('/file2upload', function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
         var oldpath = files.file.path;
         var npath = __dirname + '/../src/assets/Video/' + files.file.name;
+        fs.copyFile(oldpath, npath, function (err) {
+            //console.log(npath);
+            if (err) {
+                console.error(err);
+                res.send({message:"Not Uploaded",flag:false});
+            }
+            else {
+                //console.log("FileUploded");
+                res.send({message:"Uploaded",flag:true});
+            }
+        });
+        return;
+    });
+});
+
+app.post('/textbook2upload', function (req, res) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        var oldpath = files.file.path;
+        var npath = __dirname + '/../src/assets/Textbook/' + files.file.name;
         fs.copyFile(oldpath, npath, function (err) {
             //console.log(npath);
             if (err) {
@@ -82,3 +102,5 @@ userRoutes(router);
 categoryRoutes(router);
 videoRoutes(router);
 usercategoryroutes(router);
+TextBookroutes(router);
+noteRoutes(router);

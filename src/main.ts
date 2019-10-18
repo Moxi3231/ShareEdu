@@ -3,7 +3,13 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+//import { NestFactory } from '@nestjs/core';
 
+/*async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.enableCors();
+}*/
+//bootstrap();
 if (environment.production) {
   enableProdMode();
 }

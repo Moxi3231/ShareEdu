@@ -1,0 +1,41 @@
+<div class="container container-fluid card w-50 bg-transparent">
+    <form (ngSubmit)="onSubmit()" #assign_email="ngForm" class="form-group  shadow" *ngIf="areUserAvailable; else elseBlock">
+        <label class="form-control-plaintext text-center uk-text-bold font-weight-bolder display-4">Select Email</label>
+        <select class="form-control w-25 m-auto" required  [(ngModel)]="uEmail" name="uEmail" #uEmailV = "ngModel">
+            <option *ngFor="let user of nonAdmin" value="{{ user.email }}">{{user.email}}</option>    
+        </select>
+        <div class="alert alert-warning" *ngIf="uEmailV.invalid && ( uEmailV.touched || uEmailV.dirty )">
+            Enter valid email.
+        </div>
+        <button type="submit" class="btn btn-block btn-sm btn-secondary w-25 m-auto" [disabled]="!assign_email.valid">Assign Admin</button>
+    </form>
+    <ng-template #elseBlock>
+        No Users 
+    </ng-template>
+</div>
+<hr>
+<h6 class="display-4 text-center" style="text-shadow: 2px 2px 5px whitesmoke">Admin Users</h6>
+<hr>
+<table class="table table-hover table-bordered  table-light shadow-lg">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Admin</th>
+            <th scope="col">DEL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of Admin;index as i">
+            <th scope="row">{{i}}</th>
+            <td>{{user.email}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.isAdmin}}</td>
+            <td>
+                <button class="btn btn-danger btn-block btn-sm" [disabled]="user.email=='moxankpatel@gmail.com'" (click)="removeAdmin(user.email)">Delete</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>

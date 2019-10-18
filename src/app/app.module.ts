@@ -7,14 +7,21 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { DataBaseService } from './data-base.service';
-import { HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateCategoriesComponent } from './create-categories/create-categories.component';
 import { VideoComponent } from './video/video.component';
 import { CategoryVideoComponent } from './category-video/category-video.component';
 import { SubscribeCategoryComponent } from './subscribe-category/subscribe-category.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-
+import { AssignAdminComponent } from './assign-admin/assign-admin.component';
+import { NotesComponent } from './notes/notes.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { TermsComponent } from './terms/terms.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AdminTextbookComponent } from './admin-textbook/admin-textbook.component';
+import { TextbookComponent } from './textbook/textbook.component';
+import {PdfViewerModule} from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,15 +31,23 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     VideoComponent,
     CategoryVideoComponent,
     SubscribeCategoryComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AssignAdminComponent,
+    NotesComponent,
+    AboutUsComponent,
+    TermsComponent,
+    ContactUsComponent,
+    AdminTextbookComponent,
+    TextbookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PdfViewerModule
   ],
-  providers: [DataBaseService,CookieService],
+  providers: [DataBaseService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -97,6 +97,7 @@ export class HeaderComponent implements OnInit {
 
   public onLSubmit() {
     var x = this.DB.getUser(this.lemail, this.lpass);
+    $("#closeL").trigger('click');
     x.forEach(e => {
       //console.log(e);
       if (e.flag == true) {
@@ -123,13 +124,18 @@ export class HeaderComponent implements OnInit {
         $("#errContent").html("No Such User");
         $("#errHeading").html("Login Failure!!");
         $("#errTrigger").trigger('click');
+        setTimeout(function(){
+          $("#openL").trigger('click');
+        },1000);
       }
     });
   }
   public openNav() {
+    
     //document.getElementById("mySidenav").style.width = "250px";
     if (this.tempFlag) {
       $("#mySidenavR").css("width", "450px");
+      $("#mySidenav").css("width", "750px");
       this.tempFlag = false;
     }
     else {
@@ -138,9 +144,28 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  public openNavForUser()
+  {
+    $("#imageHere").css({'transform': 'rotate(-90deg)'});
+    if (this.tempFlag) {
+      document.getElementById("myNav").style.width = "100%";
+      this.tempFlag = false;
+    }
+    else {
+      this.closeNavForUser();
+      this.tempFlag = true;
+    }
+    }
+    
+    /* Close when someone clicks on the "x" symbol inside the overlay */
+   public  closeNavForUser() {
+      document.getElementById("myNav").style.width = "0%";
+  }
+
   public closeNav() {
     //document.getElementById("mySidenav").style.width = "0";
     $("#mySidenavR").css("width", "0px");
+    $("#mySidenav").css("width", "0px");
 
   }
 }

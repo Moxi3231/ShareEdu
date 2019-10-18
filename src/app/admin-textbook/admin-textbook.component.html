@@ -1,0 +1,67 @@
+<br>
+<form class="card card-body w-75 m-auto shadow-lg" #vReg="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="FileName">Name of the Book</label>
+        <input type="text" required class="form-control" id="FileName" [(ngModel)]="dname" name="dname"
+            #dname_form="ngModel" placeholder="Enter Name of Book">
+    </div>
+    <div class="form-group">
+        <label for="">Author's Name</label>
+        <input type="text" required class="form-control" id="FileName" [(ngModel)]="daname" name="daname"
+            #daname_form="ngModel" placeholder="Author's Name">
+    </div>
+    <div class="form-group">
+        <label for="Desc">Description</label>
+        <textarea rows="5" required class="form-control" id="Desc" [(ngModel)]="desc" name="desc" #desc_form="ngModel"
+            placeholder="Enter Description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Select Course</label>
+        <select class="form-control" id="course" [(ngModel)]="course" name="course" #course_form="ngModel">
+            <option *ngFor="let s of clist" value="{{ s.name }}">{{ s.name }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="File">Upload File</label>
+        <input type="file" required class="form-control" id="File" (change)="upload($event.target.files)" />
+        <input type="hidden" value="{{ filename }}">
+        <div class="progress" style="height: 2px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" id="pbar" role="progressbar"
+                aria-valuemin="0" aria-valuemax="100" style="width: 0;">
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" [disabled]="!vReg.form.valid || fileUploaded"
+            class="btn btn-outline-primary">Submit</button>
+    </div>
+</form>
+<hr>
+<div class="container card">
+    <p class="m-auto card-header d-block display-4 text-center">TEXTBOOKS</p>
+    <table id="customers" class="table table-hover table-striped shadow-lg">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Path</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of textbooks;index as i">
+                <td>{{i}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Course}}</td>
+                <td>{{item.Description}}</td>
+                <td>{{item.Author}}</td>
+                <td>{{item.Path}}</td>
+                <td><button class="btn btn-block btn-sm btn-danger" (click)="Delete(item.Name)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div>

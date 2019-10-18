@@ -17,18 +17,18 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" minlength="7" maxlength="30" required class="form-control" [disabled]="editEnable"  [(ngModel)]="password" name="password"
+                        <input type="password" minlength="7" (change)="onChange()" maxlength="30" required class="form-control" [disabled]="editEnable"  [(ngModel)]="password" name="password"
                             #pass_d="ngModel" id="upassword" placeholder="Password">
                     </div>
                     <div class="form-group">
 
                         <label for="name">Name</label>
-                        <input type="text" required class="form-control" [disabled]="editEnable" [(ngModel)]="uname" name="uname" #name_d="ngModel"
+                        <input type="text" (change)="onChange()" required class="form-control" [disabled]="editEnable" [(ngModel)]="uname" name="uname" #name_d="ngModel"
                             id="uname" aria-describedby="name">
                     </div>
                    
                         <button type="button" (click)="editEnable=!editEnable" class="btn btn-block btn-dark m-auto">Edit</button>
-                        <button type="submit" (click)="submit()" [disabled]="editEnable" class="btn btn-primary btn-block m-auto">Submit</button>
+                        <button type="submit" (click)="submit()" [disabled]="editEnable || !detailsForm.valid" class="btn btn-primary btn-block m-auto">Submit</button>
                 </form>
             </div>
         </div>

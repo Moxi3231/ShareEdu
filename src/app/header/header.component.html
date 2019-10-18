@@ -45,8 +45,11 @@
   <div *ngIf="isAdmin">
     <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
   </div>
+  <div *ngIf="!isAdmin && loggedIN">
+    <span id="imageHere" style="font-size:30px;cursor:pointer" (click)="openNavForUser()">&#9776;</span>
+  </div>
   &nbsp;&nbsp;
-  <a class="navbar-brand" href="/Home">ShareEdu</a>
+  <a class="navbar-brand" routerLink="/Home">ShareEdu</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -117,13 +120,43 @@
   <a class="btn-link btn btn-block  btn-outline-light text-center" style="border: none; padding: 0;" href="/Home" (click)="logout()">Logout</a>
 </div>
 
+<div id="mySidenav" class="sidenav" style="z-index: 10;">
+    <h6 class="text-center text-white text-justify display-3">User</h6>
+    <a   routerLink="/Categories">Categories</a>
+    <a  routerLink="/SubscribeCategory">Subscribe Category</a>
+    <a routerLink="/TextbookView">TextBooks</a>
+    <a  routerLink="/Notes">Make Notes</a>
+    <a  routerLink="/Home">Home</a>
+  </div>
+
 <div id="mySidenavR" class="sidenavR">
-  <a href="javascript:void(0)" class="closebtn" on-click="closeNav()">&times;</a>
-  <a href="/ACreateCategories">Categories</a>
-  <a href="/AVideo">Videos</a>
-  <a href="#">Books</a>
-  <a href="#">Notes</a>
+  <a id="nstyle" href="javascript:void(0)" class="closebtn" on-click="closeNav()">&times;</a>
+  <h6 class="text-center text-white text-justify display-3">Admin</h6>
+  <a  routerLink="/AssignAdmin">Assign Admin</a>
+  <a routerLink="/ACreateCategories">Categories</a>
+  <a routerLink="/AVideo">Videos</a>
+  <a routerLink="/ATextbook">Books</a>
+ 
 </div>
+
+<div id="myNav" class="overlay" style="z-index: 6;">
+
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNavForUser()">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <a id="a" class="dropdown-item" routerLink="/Categories">Categories</a>
+    <a id="a" class="dropdown-item" routerLink="/TextbookView">Textbooks</a>
+    <a id="a" class="dropdown-item" routerLink="/Notes">Make Notes</a>
+    <div class="dropdown-divider"></div>
+    <a id="a" class="dropdown-item" routerLink="/SubscribeCategory">Subscribe Category</a>
+    <a id="a" class="dropdown-item" routerLink="/Home">Home</a>
+  </div>
+
+</div>
+
+<!-- Use any element to open/show the overlay navigation menu -->
 
 <div id="Modal">
   <div class="modal fade shadow-lg" id="exampleModalCenter2" show="false" tabindex="5" role="dialog"
@@ -147,8 +180,11 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="SEmail" [email]="true" name="email" required
+                  <input type="email" class="form-control" id="SEmail" #femail="ngModel" [email]="true" name="email" required
                     [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <div class="alert alert-warning" *ngIf="femail.invalid && ( femail.touched || femail.dirty )">
+                      Enter valid email.
+                  </div>
                 </div>
 
 
@@ -157,9 +193,13 @@
                  
 
                     <input type="password" class="form-control " name="password" [(ngModel)]="password" required
-                    minlength="7" maxlength="30" id="SPassword" placeholder="Password">
+                    minlength="7" maxlength="30" id="SPassword" #password__form="ngModel" placeholder="Password">
                   <input type="password" class="form-control" name="cpassword" (change)="change()" [(ngModel)]="cpassword" required
                     minlength="7" maxlength="30" id="cSPassword" placeholder="Confirm Password">
+                  <div class="alert alert-warning" *ngIf="password__form.invalid && ( password__form.touched || password__form.dirty )">
+                      Password is required / Minlength - 7
+                  </div>
+
                   <label class="alert alert-danger w-100 " *ngIf="pChange">
                     Password Must be same
                   </label>
@@ -169,7 +209,9 @@
                   <label for="exampleInputName1">Name</label>
                   <input type="text" required minlength="5" #nameC="ngModel" [(ngModel)]="name" class="form-control"
                     id="name" name="name" maxlength="30" placeholder="Enter Name">
-
+                    <div class="alert alert-warning" *ngIf="nameC.invalid && ( nameC.touched || nameC.dirty )">
+                      Name is required / Minlength - 5
+                  </div>
                 </div>
 
               </div>
@@ -210,15 +252,25 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="email"  class="form-control" [email]="true" name="lemail" [(ngModel)]="lemail"
+                  <input type="email"  class="form-control" [email]="true" name="lemail" #semail="ngModel" [(ngModel)]="lemail"
                     id="exampleInputEmail1" required aria-describedby="emailHelp" placeholder="Enter email">
+                    
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                     else.</small>
+
+                    <div class="alert alert-warning" *ngIf="semail.invalid && ( semail.touched || semail.dirty )">
+                      Enter valid email address.
+                    </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" [(ngModel)]="lpass" required name="lpass" class="form-control"
+                  <input type="password" [(ngModel)]="lpass" #cpassword_form="ngModel" required minlength="7" name="lpass" class="form-control"
                     id="exampleInputPassword1" placeholder="Password">
+
+                    <div class="alert alert-warning" *ngIf="cpassword_form.invalid && ( cpassword_form.touched || cpassword_form.dirty )">
+                      Enter valid password
+                    </div>
+
                 </div>
 
 

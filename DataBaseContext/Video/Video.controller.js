@@ -7,8 +7,8 @@ uploadPath = function (req, res, next) {
         description: req.body.description,
         category:req.body.category
     };
-    console.log(req.body);
-    //console.log(__user);
+    //console.log(req.body);
+    //console.log(__video);
     Video.insertMany([__video], function (err, std) {
         if (err) {
             console.log("Some Error Occured: " + err);
@@ -54,8 +54,27 @@ getPathByCategory =function(req,res,next){
         }
     });
 }
+
+deletePathByName = function (req,res,next) { 
+    Video.deleteOne({name:req.body.name},function (err) { 
+        if(err)
+        {
+            res.json({
+                message:"No record found",
+                flag:false
+            });
+        }
+        else{
+            res.json({
+                message:"Deleted succesfully",
+                flag:true
+            });
+        }
+     });
+ }
 module.exports = function (router) {
     router.post('/uploadPath', uploadPath);
     router.post('/getPaths',getPaths);
     router.post('/getPathByCategory',getPathByCategory);
+    router.post('/deletePathByName',deletePathByName);
 }

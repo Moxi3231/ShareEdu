@@ -34,7 +34,7 @@
     }
     
     
-    #contentBack,#imgZIO {
+    #contentBacks,#imgZIO {
         -webkit-animation: zoom 10s; /* Chrome, Safari, Opera */
         animation: zoom 10s;
         animation-iteration-count: infinite;

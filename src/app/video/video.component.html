@@ -19,10 +19,14 @@
         <label for="File">Upload File</label>
         <input type="file" required class="form-control" id="File" (change)="upload($event.target.files)" />
         <input type="hidden" value="{{ filename }}">
-        <label *ngIf="fileUE">Retry to upload file.</label>
+        
+        <div class="progress" style="height: 2px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" id="pbar" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0;">
+            </div>
+          </div>
     </div>
     <div>
-        <button type="submit" [disabled]="!vReg.form.valid || fileUploaded"
+        <button type="submit" [disabled]="!vReg.form.valid || enableButton"
             class="btn btn-outline-primary">Submit</button>
     </div>
 </form>
@@ -41,6 +45,7 @@
                 <th scope="col">Path</th>
                 <th scope="col">Description</th>
                 <th scope="col">Category</th>
+                <th scope="col">DEL</th>
             </tr>
         </thead>
         <tbody>
@@ -50,6 +55,7 @@
                 <td>{{s.path}}</td>
                 <td>{{s.description}}</td>
                 <td>{{s.category}}</td>
+                <td><button class="btn btn-sm btn-block btn-danger" (click)="deletePath(s.name)">Delete</button></td>
             </tr>
         </tbody>
     </table>

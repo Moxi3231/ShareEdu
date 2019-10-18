@@ -1,0 +1,20 @@
+<div class="container container-fluid">
+    <h4 class="text-center text-justify display-3">Create Note</h4>
+    <hr>
+    <label class="form-control-plaintext w-25 m-auto">Enter new note name:  </label>
+    <input [(ngModel)]="nfilename" class="form-control m-auto w-25" required (change)="changeFlag()">
+    <button class="btn btn-block btn-outline-success w-25 m-auto" [disabled]="tempflag" (click)="create()">Create</button>
+
+    <hr class="border border-dark">
+    <div class="note w-100" *ngIf="uNote.length!=0">
+        <select class="form-control w-25 m-auto" [(ngModel)]="sfilename" required (change)="showText()">
+            <option *ngFor="let item of uNote" value={{item.Name}} >{{item.Name}}</option>
+        </select>
+        <hr>
+        <textarea *ngIf="selected" (change)="updateText()" placeholder="This is an awesome comment box" rows="20" name="text" [(ngModel)]="content" id="comment_text" cols="40" class="ui-autocomplete-input w-100 h-100 m-auto" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  ></textarea>
+        <div class="alert alert-info text-center" *ngIf="!selected">Select note from above.</div>
+    </div>
+    <ng-template *ngIf="uNote.length==0">
+        <label class="alert alert-warning w-100 text-center">No notes available.<br>Create New note from above.</label>
+    </ng-template>
+</div>

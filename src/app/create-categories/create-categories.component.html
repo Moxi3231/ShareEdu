@@ -1,6 +1,6 @@
-<div class="card card-body shadow-sm" style="z-index: 2;" id="sticky">
+<div class="card card-body w-75 m-auto shadow" style="z-index: 2;" id="sticky">
     <div class="form-group">
-        <label for="name" class="text-center">Category</label>
+        <label for="name" class="text-center font-weight-light" style="font-size: 25px;">Create Category</label>
         <input type="text" class="form-control" #cname required minlength="3" maxlength="30"  placeholder="Enter Category">
         <div *ngIf="tempFlag" class="text-center text-justify">
             Cannot insert this [{{cname.value}}] because it already exists!

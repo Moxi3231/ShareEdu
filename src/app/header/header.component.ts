@@ -31,6 +31,15 @@ export class HeaderComponent implements OnInit {
   constructor(private DB: DataBaseService, private Cookie: CookieService, private router: Router) { }
 
   ngOnInit() {
+    $(document).ready(function(){
+      $('a').click(function(){
+        document.getElementById("myNav").style.width = "0%";
+        $("#mySidenavR").css("width", "0px").delay(200);
+        setTimeout(function(){
+          $("#mySidenav").css("width", "0px").delay(100);
+        },200);
+      });
+    });
     //$("#contentBack").remove();
     $("#errTrigger").hide();
     var x = this.Cookie.get('LoggedIN');

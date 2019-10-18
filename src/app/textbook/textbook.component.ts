@@ -34,9 +34,13 @@ export class TextbookComponent implements OnInit {
   public tempFlag:Boolean=false;
   constructor(private DB: DataBaseService, private Cookie: CookieService, private router: Router) { }
 
+  ngOnDestroy(){
+    $("body").css({ background: 'none'});
+  }
+
   ngOnInit() {
     $("#contentBack").remove();
-    $("body").css({ background: 'linear-gradient(to right,#2193b0, #6dd5ed)'});
+    $("body").css({ background: 'linear-gradient(to right,#83a4d4, #b6fbff)'});
 
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {

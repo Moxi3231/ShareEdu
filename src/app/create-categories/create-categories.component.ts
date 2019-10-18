@@ -48,7 +48,7 @@ export class CreateCategoriesComponent implements OnInit {
     {
       $('#errHeading').html('Empty Category!');
       $("#errContent").addClass("alert alert-danger");
-      $("#errContent").html("Category cannont be empty");
+      $("#errContent").html("Category cannot be empty");
       $("#errTrigger").trigger('click');
       return;
     }

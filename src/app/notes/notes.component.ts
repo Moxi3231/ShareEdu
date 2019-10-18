@@ -29,6 +29,8 @@ export class NotesComponent implements OnInit {
 
   public unoteNot: boolean = false;
 
+  public zeroNote:boolean=true;
+
   public content: string;
 
   constructor(private DB: DataBaseService, private Cookie: CookieService, private router: Router) { }
@@ -48,6 +50,8 @@ export class NotesComponent implements OnInit {
       this.router.navigate(['/Home']);
     }
     this.DB.getNoteByEmail(this.obj.email).subscribe(data => {
+      if((<Note[]>data.records).length!=0)
+        this.zeroNote=false;
       if (data.flag) {
         this.uNote = data.records;
 
@@ -56,6 +60,7 @@ export class NotesComponent implements OnInit {
         console.log("Refresh page");
       }
     });
+    //console.log(this.zeroNote);
   }
 
   public changeFlag() {
@@ -89,6 +94,24 @@ export class NotesComponent implements OnInit {
     this.uNote.forEach(notee => {
       if (notee.Name == this.sfilename) {
         this.content = notee.Content;
+      }
+    });
+  }
+  public deleteNote(){
+    this.DB.deleteNote(this.email,this.sfilename).subscribe(data=>{
+      if(data.flag)
+      {
+        $('#errHeading').html('Note Deleted');
+        $("#errContent").addClass("alert alert-success");
+        $("#errContent").html("Deleted Note: "+this.sfilename);
+        $("#errTrigger").trigger('click');
+        this.ngOnInit();
+      }
+      else{
+        $('#errHeading').html('Couldn"t Delete Note');
+        $("#errContent").addClass("alert alert-danger");
+        $("#errContent").html("Failure");
+        $("#errTrigger").trigger('click');
       }
     });
   }

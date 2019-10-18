@@ -84,6 +84,14 @@ export class AdminTextbookComponent implements OnInit {
   onSubmit() {
    // var x; //= this.DB.addbooks(this.dname,'../../assets/books/'+this.filename,this.course,this.desc);
    this.filename=this.files[0].name;
+   if(!this.filename.endsWith('.pdf'))
+    {
+      $("#errHeading").html("Cannot upload file");
+        $("#errContent").html("PDF's are only allowed");
+        $("#errContent").addClass("alert alert-danger");
+        $("#errTrigger").trigger('click');
+        return;
+    }
    var x = this.DB.addBooks(this.dname,'../../assets/Textbook/'+this.filename,this.daname,this.desc,this.course); 
    x.forEach(y=>{
       if(y.flag)

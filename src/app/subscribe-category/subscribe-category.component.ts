@@ -27,6 +27,8 @@ export class SubscribeCategoryComponent implements OnInit {
   constructor(private DB: DataBaseService, private Cookie: CookieService, private router: Router) { }
 
   ngOnInit() {
+    this.userCatList=[];
+    this.clist=[];
     $("#contentBack").remove();
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
@@ -76,12 +78,13 @@ export class SubscribeCategoryComponent implements OnInit {
     var x = this.DB.subscribeCategoryForUser(this.email,category);
     x.forEach(data=>console.log(data));
     location.reload();
-
+    //this.ngOnInit();
   }
   public unsubCourse(category:string)
   {
     var x = this.DB.deleteCategoryForUser(this.email,category);
     x.forEach(data=>console.log(data));
     location.reload();
+   // this.ngOnInit();
   }
 }

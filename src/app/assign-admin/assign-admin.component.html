@@ -1,7 +1,7 @@
 <div class="container container-fluid card w-50 bg-transparent">
     <form (ngSubmit)="onSubmit()" #assign_email="ngForm" class="form-group  shadow" *ngIf="areUserAvailable; else elseBlock">
         <label class="form-control-plaintext text-center uk-text-bold font-weight-bolder display-4">Select Email</label>
-        <select class="form-control w-25 m-auto" required  [(ngModel)]="uEmail" name="uEmail" #uEmailV = "ngModel">
+        <select class="form-control w-50 m-auto" required  [(ngModel)]="uEmail" name="uEmail" #uEmailV = "ngModel">
             <option *ngFor="let user of nonAdmin" value="{{ user.email }}">{{user.email}}</option>    
         </select>
         <div class="alert alert-warning" *ngIf="uEmailV.invalid && ( uEmailV.touched || uEmailV.dirty )">

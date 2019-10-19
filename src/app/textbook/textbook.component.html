@@ -5,42 +5,50 @@
         <option *ngFor="let item of clist" value="{{item.category}}">{{item.category}}</option>
     </select>
     <hr>
+    <div class="alert alert-info text-center text-justify" *ngIf="clist.length==0">
+        You Haven't Subscribed to any category.
+        <a class="page-link" href="/SubscribeCategory">Click Me To Subscribe</a>
+    </div>
     <div *ngIf="tempFlag">
-    <p class="m-auto card-header d-block display-4 text-center">Textbooks for {{pageCourse}}</p>
-    <table id="customers" class="table table-hover table-striped shadow-lg bg-light" *ngIf="!noTextbook; else elseBLC">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Author</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of selectedTextbook;index as i">
-                <td>{{i}}</td>
-                <td>{{item.Name}}</td>
-                <td>{{item.Description}}</td>
-                <td>{{item.Author}}</td>
-                <td><button class="btn btn-block btn-sm btn-outline-secondary" (click)="show(item.Path)">Show</button></td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <ng-template *ngIf="!toogleTextbook || noTextbook">
+        <p class="m-auto card-header d-block display-4 text-center">Textbooks for<span>
+                <p style="color: darkcyan; "> {{pageCourse}}</p>
+            </span> </p>
+        <table id="customers" class="table table-hover table-striped shadow-lg bg-light"
+            *ngIf="!noTextbook; else elseBLC">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Author</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of selectedTextbook;index as i">
+                    <td>{{i}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Description}}</td>
+                    <td>{{item.Author}}</td>
+                    <td><button class="btn btn-block btn-sm btn-outline-secondary"
+                            (click)="show(item.Path)">Show</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-template *ngIf="!toogleTextbook || noTextbook">
             <div class="alert alert-danger">
                 Click on show from above textbook
             </div>
-    </ng-template>
-    <ng-template #elseBLC class="card bg-transparent font-weight-lighter alert-danger alert">
-        <div class="text-black-50 text-center display-2 text-danger">
+        </ng-template>
+        <ng-template #elseBLC class="card bg-transparent font-weight-lighter alert-danger alert">
+            <div class="text-black-50 text-center display-2 text-danger">
                 No textbook found
+            </div>
+        </ng-template>
+
+        <div class="card card-body bg-transparent" *ngIf="toogleTextbook">
+            <pdf-viewer src="{{filePath}}"></pdf-viewer>
         </div>
-    </ng-template>
-    
-<div class="card card-body bg-transparent" *ngIf="toogleTextbook">
-    <pdf-viewer src="{{filePath}}"></pdf-viewer>
-</div>
-</div>
+    </div>
 </div>

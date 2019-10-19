@@ -75,7 +75,7 @@ export class VideoComponent implements OnInit {
         this.percentDone = Math.round(100 * event.loaded / event.total);
         $("#pbar").css({width:this.percentDone.toLocaleString()+'%'});
       } else if (event instanceof HttpResponse) {
-        console.log('Failure');
+        //console.log('Failure');
         this.fileUploaded = true;
         this.fileUE=true;
       }

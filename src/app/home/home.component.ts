@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
-  constructor() { }
+  public loggedIn:Boolean=false;
+  constructor(private Cookie: CookieService) { }
 
   ngOnInit() {
     $("#contentBack").remove();
+     var x = this.Cookie.get('LoggedIN');
+    if (x == 'true') {
+      this.loggedIn=true;
+    }
     var nline = document.createElement('br');
     var cur = document.createElement('span');
     var text = "TELL ME AND I FORGET.\n TEACH ME AND I REMEMBER.\n INVOLVE ME AND I LEARN.\n";

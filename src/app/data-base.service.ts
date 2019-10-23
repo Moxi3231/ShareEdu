@@ -113,4 +113,8 @@ export class DataBaseService {
   updateNote(email: string, name: string, content: string) {
     return this.http.post<any>(`${this.uri}/updateNote`, { email: email, name: name, content: content });
   }
+  sendEmail(course:string,subject:string,content:string)
+  {
+    return this.http.post<any>(`${this.uri}/SendMail`,{course:course,content:content,subject:subject});
+  }
 }

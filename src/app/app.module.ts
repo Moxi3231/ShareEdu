@@ -22,6 +22,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AdminTextbookComponent } from './admin-textbook/admin-textbook.component';
 import { TextbookComponent } from './textbook/textbook.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
+import { SendMailComponent } from './send-mail/send-mail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,14 +40,16 @@ import {PdfViewerModule} from 'ng2-pdf-viewer';
     TermsComponent,
     ContactUsComponent,
     AdminTextbookComponent,
-    TextbookComponent
+    TextbookComponent,
+    SendMailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    PdfViewerModule
+    PdfViewerModule,
+ 
   ],
   providers: [DataBaseService, CookieService],
   bootstrap: [AppComponent]

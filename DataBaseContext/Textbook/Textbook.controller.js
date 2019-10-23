@@ -1,5 +1,6 @@
 var textbook = require('./Textbook.models');
-
+var UserCategory = require('./../UserCategory/UserCategory.models');
+var email = require('./../EmailTransporter');
 createtextbook = function (req, res, next) {
    // console.log(req.body);
     var __book = {  
@@ -10,6 +11,10 @@ createtextbook = function (req, res, next) {
         Author:req.body.Author
     };
    // console.log(req.body.Name)
+   //Sending email
+    
+       
+    
     textbook.insertMany([__book], function (err, std) {
         if (err) {
             console.log("Some Error Occured: " + err);
@@ -20,6 +25,7 @@ createtextbook = function (req, res, next) {
             return;
         }
         else {
+            email(__book.Course,"Dear User,\n New Textbook available for your course.Check it out","New Book");
             res.send({
                 message: "Book Inserted Succesfully",
                 flag:true

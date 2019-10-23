@@ -14,12 +14,15 @@ var TextBookroutes = require('./Textbook/Textbook.controller');
 var noteRoutes = require('./Notes/Notes.controller');
 //Router
 var router = exp.Router();
-
+var email = require('./EmailTransporter');
 //To extract html content
 var bodyParser = require('body-parser');
 
 //console.log(__dirname);
 app.use(cors());
+
+
+
 app.post('/file2upload', function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
@@ -66,6 +69,14 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 app.use(exp.json());       // to support JSON-encoded bodies
 app.use(exp.urlencoded({ extended: true })); // to support URL-encoded bodies
+
+app.post('/conDB/SendMail',function(req,res,next){
+    //console.log("Received");
+    //console.log(req.body);
+    //console.log(req.params['course']);
+    email(req.body.course,req.body.content,req.body.subject);
+    res.send({flag:true});
+});
 
 function DBCon() {
     mongoose.connect('mongodb://localhost:27017/ShareEduDB', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });

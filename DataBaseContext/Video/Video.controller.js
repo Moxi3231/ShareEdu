@@ -1,5 +1,5 @@
 var Video = require('./Video.models');
-
+var email =require('./../EmailTransporter');
 uploadPath = function (req, res, next) {
     var __video = {
         name: req.body.name,
@@ -9,6 +9,7 @@ uploadPath = function (req, res, next) {
     };
     //console.log(req.body);
     //console.log(__video);
+    
     Video.insertMany([__video], function (err, std) {
         if (err) {
             console.log("Some Error Occured: " + err);
@@ -18,6 +19,7 @@ uploadPath = function (req, res, next) {
             return;
         }
         else {
+            email(__video.category,"Dear User,\n New Video Uploaded,\nPlease Check It out","New Video!!");
             res.send({
                 message: "Video Uploaded Succesfully"
             });

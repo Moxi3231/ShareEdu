@@ -33,10 +33,14 @@
                         </div>
                         <div class="card w-auto" *ngFor="let video of videosForSelectedCourse;index as i">
                             <div class="card-header">
-                                {{video.name}}
+                            <p style="font-family: cursive; color: dodgerblue;"> {{video.name}}
+
+                               <span id="tick{{video.name.replace(' ','')}}" class="text-success float-right display-4" style="font-size: 33px; visibility: hidden;;">&#10003;</span>
+                            
+                            </p>
                             </div>
                             <div class="card-body w-100">
-                                <video controls class="w-100" preload="none" poster="../../assets/Image/VideoIcon.jpg">
+                                <video controls class="w-100" preload="none" (ended)="videoFinished(video.name)"  poster="../../assets/Image/VideoIcon.jpg">
                                     <source src="{{video.path}}" type="video/mp4">
                                 </video>
                                 <button class="btn btn-outline-primary btn-block btn-sm" type="button" value="{{video.name.replace(' ','')}}"
@@ -60,8 +64,10 @@
             </div>
         </div>
 
-        <ng-template class="card card-header text-center" #elseblock3>
+        <ng-template  #elseblock3>
+           <div class="card card-header text-center w-100 m-auto">
             No Video Currently available for this Category.
+           </div>
         </ng-template>
 
 

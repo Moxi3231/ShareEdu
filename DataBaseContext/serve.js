@@ -12,6 +12,7 @@ var videoRoutes = require('./Video/Video.controller');
 var usercategoryroutes = require('./UserCategory/UserCategory.controller');
 var TextBookroutes = require('./Textbook/Textbook.controller');
 var noteRoutes = require('./Notes/Notes.controller');
+var videostorageroutes = require('./VideoStorage/VideoStorage.controller');
 //Router
 var router = exp.Router();
 var email = require('./EmailTransporter');
@@ -115,3 +116,4 @@ videoRoutes(router);
 usercategoryroutes(router);
 TextBookroutes(router);
 noteRoutes(router);
+videostorageroutes(router);

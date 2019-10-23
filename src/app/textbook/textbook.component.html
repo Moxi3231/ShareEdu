@@ -10,9 +10,9 @@
         <a class="page-link" href="/SubscribeCategory">Click Me To Subscribe</a>
     </div>
     <div *ngIf="tempFlag">
-        <p class="m-auto card-header d-block display-4 text-center">Textbooks for<span>
+        <p class="m-auto card-header d-block display-4 text-center"><small>Textbooks for<span>
                 <p style="color: darkcyan; "> {{pageCourse}}</p>
-            </span> </p>
+            </span></small> </p>
         <table id="customers" class="table table-hover table-striped shadow-lg bg-light"
             *ngIf="!noTextbook; else elseBLC">
             <thead>

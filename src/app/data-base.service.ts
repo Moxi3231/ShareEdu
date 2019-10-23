@@ -117,4 +117,11 @@ export class DataBaseService {
   {
     return this.http.post<any>(`${this.uri}/SendMail`,{course:course,content:content,subject:subject});
   }
+  videoSeen(name:string,email:string)
+  {
+    return this.http.post<any>(`${this.uri}/videoSeen`,{email:email,name:name});
+  }
+  getSeenByEmail(email:string){
+    return this.http.post<any>(`${this.uri}/getSeenByEmail`,{email:email});
+  }
 }

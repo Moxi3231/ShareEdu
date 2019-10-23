@@ -6,6 +6,8 @@ import {Router} from '@angular/router';
 import { Category } from '../create-categories/Category';
 import { UserCategory } from '../subscribe-category/UserCategory';
 import { VideoCategoryForUser } from './CategoryVideo';
+import { VideoSeen } from './VideoSeen';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-category-video',
@@ -26,10 +28,15 @@ export class CategoryVideoComponent implements OnInit {
   public selectedCourse:string;
   public courseList:UserCategory[]=[];
   public courseDetailFlag:Boolean=false;
+
+  public vseen:VideoSeen[];
+
   constructor(private DB: DataBaseService, private Cookie: CookieService,private router:Router) { }
 
   ngOnInit() {
+    this.vseen=[];
     //Login
+    
     $("#contentBack").remove();
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
@@ -42,6 +49,32 @@ export class CategoryVideoComponent implements OnInit {
     //Login
     this.email = JSON.parse(this.Cookie.get('User')).email;
     this.DB.getUserCategories(this.email).forEach(data=>this.courseList=data);
+    this.DB.getSeenByEmail(this.email).subscribe(data=>this.vseen=data.records);
+  }
+
+  videoFinished(video:string){
+    this.DB.videoSeen(video,this.email).subscribe(data=>{
+     // console.log(data);
+    });
+  }
+
+  private delay(ms: number)
+{
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+  
+
+private async makeVisible()
+  {
+    await this.delay(3000);
+      //  console.log(this.vseen);
+        this.vseen.forEach(d=>{
+          var id = "#tick"+d.name.replace(' ','');
+          //console.log(id);
+          $(id).css({'visibility':'visible'}).hide();
+          $(id).fadeIn(100);
+        });
+      
   }
 
   showCourseDetailsFor(category:string)
@@ -52,11 +85,14 @@ export class CategoryVideoComponent implements OnInit {
       if(data.flag)
       {
         this.videosForSelectedCourse=data.record;
+        //console.log(this.vseen);
       }
       else
       {
         this.noVideo=true;
       }
     });
+
+   this.makeVisible();
   }
 }

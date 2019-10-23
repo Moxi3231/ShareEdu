@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+
 import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-home',
@@ -8,10 +9,15 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HomeComponent implements OnInit {
   public loggedIn:Boolean=false;
+  
+  
+
   constructor(private Cookie: CookieService) { }
 
   ngOnInit() {
+   
     $("#contentBack").remove();
+    
      var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
       this.loggedIn=true;

@@ -1,4 +1,4 @@
-<div class="container container-fluid" *ngIf="courseList.length!=0; else elseBlock">
+<div class="container container-fluid" *ngIf="courseList.length!=0; else elseBlock" data-aos="slide-up" data-aos-duration="1000">
     <div class="card-group scrollmenu">
         <a class="btn btn-link btn-outline-light border border-info" (click)="showCourseDetailsFor(svar.category)" *ngFor="let svar of courseList">
             {{ svar.category }}
@@ -14,12 +14,12 @@
                 Here</a></label>
     </div>
 </ng-template>
-<div *ngIf="courseList.length!=0">
+<div *ngIf="courseList.length!=0"  data-aos="zoom-out" data-aos-duration="1000">
     <div class="container" *ngIf="courseDetailFlag; else elseBlock2">
 
 <hr>
 
-        <div class="card shadow-lg" id="divM" *ngIf="!noVideo; else elseblock3">
+        <div class="card shadow-lg" id="divM" *ngIf="!noVideo; else elseblock3"  data-aos="slide-up" data-aos-duration="1000">
             <div class="card-header">
                 <h4 id="item-2" class="text-center">{{ selectedCourse }}</h4>
             </div>
@@ -39,7 +39,7 @@
                             
                             </p>
                             </div>
-                            <div class="card-body w-100">
+                            <div class="card-body w-100"  data-aos="slide-up" data-aos-duration="1500">
                                 <video controls class="w-100" preload="none" (ended)="videoFinished(video.name)"  poster="../../assets/Image/VideoIcon.jpg">
                                     <source src="{{video.path}}" type="video/mp4">
                                 </video>

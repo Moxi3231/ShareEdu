@@ -24,6 +24,7 @@ import { TextbookComponent } from './textbook/textbook.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
 import { SendMailComponent } from './send-mail/send-mail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

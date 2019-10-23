@@ -177,4 +177,9 @@ export class HeaderComponent implements OnInit {
     $("#mySidenav").css("width", "0px");
 
   }
+
+  public search(s:string)
+  {
+    console.log(s);
+  }
 }

@@ -29,6 +29,11 @@
 
   }
 
+  .clink:hover{
+   padding-right:10px ;
+    font-size: 150%;
+  }
+
   #Modal {
     position: relative;
   }
@@ -39,9 +44,9 @@
     z-index: 5;
   }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm bg-dark position-sticky border-bottom border-dark"
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm bg-dark  position-sticky border-bottom border-dark"
   id="hMain">
-
+  &nbsp;&nbsp;
   <div *ngIf="isAdmin">
     <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
   </div>
@@ -49,11 +54,14 @@
     <span id="imageHere" style="font-size:30px;cursor:pointer" (click)="openNavForUser()">&#9776;</span>
   </div>
   &nbsp;&nbsp;
-  <a class="navbar-brand" routerLink="/Home">ShareEdu</a>
+  
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
+ 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -63,35 +71,30 @@
           Explore
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-
           <a class="dropdown-item" href="/Categories">Categories</a>
           <a class="dropdown-item" href="/SubscribeCategory">Subscribe Category</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/Home">Home</a>
-
-
-
-
         </div>
       </li>
-
     </ul>
-    <div class="form-inline my-2 my-lg"></div>
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-
+<div class="form-inline w-75 mx-5 px-5 ">
+    <a class="navbar-brand nav-link   text-justify w-50 m-auto clink" routerLink="/Home">【ＳｈａｒｅＥｄｕ】</a>
+  </div>
   </div>
   <div id="login" *ngIf="!loggedIN">
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-info btn-sm extend" data-toggle="modal" data-target="#exampleModalCenter1">
+    <button type="button" class="btn btn-outline-info btn-sm extend" data-toggle="modal"
+      data-target="#exampleModalCenter1">
       Login
     </button>
 
     <!-- Modal -->
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-info btn-sm extend" data-toggle="modal" data-target="#exampleModalCenter2">
+    <button type="button" class="btn btn-outline-info btn-sm extend" data-toggle="modal"
+      data-target="#exampleModalCenter2">
       SignUp
     </button>
 
@@ -114,30 +117,32 @@
 
 </nav>
 
-<div class="collapse w-100 m-auto shadow-lg bg-light position-fixed "style="z-index:6;" id="aDetails">
-  <a class="btn-link btn btn-outline-light  btn-block text-center " style="border: none; padding: 0;" href="/AccountDetails">Account Details</a>
+<div class="collapse w-100 m-auto shadow-lg bg-light position-fixed " style="z-index:6;" id="aDetails">
+  <a class="btn-link btn btn-outline-light  btn-block text-center " style="border: none; padding: 0;"
+    href="/AccountDetails">Account Details</a>
   <div role="separator" class="dropdown-divider bg-light"></div>
-  <a class="btn-link btn btn-block  btn-outline-light text-center" style="border: none; padding: 0;" href="/Home" (click)="logout()">Logout</a>
+  <a class="btn-link btn btn-block  btn-outline-light text-center" style="border: none; padding: 0;" href="/Home"
+    (click)="logout()">Logout</a>
 </div>
 
 <div id="mySidenav" class="sidenav" style="z-index: 10;">
-    <h6 class="text-center text-white text-justify display-3">User</h6>
-    <a   routerLink="/Categories">Categories</a>
-    <a  routerLink="/SubscribeCategory">Subscribe Category</a>
-    <a routerLink="/TextbookView">TextBooks</a>
-    <a  routerLink="/Notes">Make Notes</a>
-    <a  routerLink="/Home">Home</a>
-  </div>
+  <h6 class="text-center text-white text-justify display-3">User</h6>
+  <a routerLink="/Categories">Categories</a>
+  <a routerLink="/SubscribeCategory">Subscribe Category</a>
+  <a routerLink="/TextbookView">TextBooks</a>
+  <a routerLink="/Notes">Make Notes</a>
+  <a routerLink="/Home">Home</a>
+</div>
 
 <div id="mySidenavR" class="sidenavR">
   <a id="nstyle" href="javascript:void(0)" class="closebtn" on-click="closeNav()">&times;</a>
   <h6 class="text-center text-white text-justify display-3">Admin</h6>
-  <a  routerLink="/AssignAdmin">Assign Admin</a>
+  <a routerLink="/AssignAdmin">Assign Admin</a>
   <a routerLink="/ACreateCategories">Categories</a>
   <a routerLink="/AVideo">Videos</a>
   <a routerLink="/ATextbook">Books</a>
   <a href="/SendEmail">Send Mail</a>
- 
+
 </div>
 
 <div id="myNav" class="overlay" style="z-index: 6;">
@@ -164,7 +169,7 @@
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
-        <div class="modal-header" >
+        <div class="modal-header">
           <h6 class="modal-title font-italic" id="exampleModalCenterTitle">Registration</h6>
           <button type="button" id="openL" class="btn btn-light btn-link" data-dismiss="modal" data-toggle="modal"
             data-target="#exampleModalCenter1">
@@ -181,37 +186,39 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="SEmail" #femail="ngModel" [email]="true" name="email" required
-                    [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
-                    <div class="alert alert-warning" *ngIf="femail.invalid && ( femail.touched || femail.dirty )">
-                      Enter valid email.
+                  <input type="email" class="form-control" id="SEmail" #femail="ngModel" [email]="true" name="email"
+                    required [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
+                  <div class="alert alert-warning" *ngIf="femail.invalid && ( femail.touched || femail.dirty )">
+                    Enter valid email.
                   </div>
                 </div>
 
 
                 <div class="form-group row-2">
                   <label for="exampleInputPassword1 col-6">Password</label>
-                 
 
-                    <input type="password" class="form-control " name="password" [(ngModel)]="password" required
+
+                  <input type="password" class="form-control " name="password" [(ngModel)]="password" required
                     minlength="7" maxlength="30" id="SPassword" #password__form="ngModel" placeholder="Password">
-                  <input type="password" class="form-control" name="cpassword" (change)="change()" [(ngModel)]="cpassword" required
-                    minlength="7" maxlength="30" id="cSPassword" placeholder="Confirm Password">
-                  <div class="alert alert-warning" *ngIf="password__form.invalid && ( password__form.touched || password__form.dirty )">
-                      Password is required / Minlength - 7
+                  <input type="password" class="form-control" name="cpassword" (change)="change()"
+                    [(ngModel)]="cpassword" required minlength="7" maxlength="30" id="cSPassword"
+                    placeholder="Confirm Password">
+                  <div class="alert alert-warning"
+                    *ngIf="password__form.invalid && ( password__form.touched || password__form.dirty )">
+                    Password is required / Minlength - 7
                   </div>
 
                   <label class="alert alert-danger w-100 " *ngIf="pChange">
                     Password Must be same
                   </label>
-                  </div>
+                </div>
 
                 <div class="form-group">
                   <label for="exampleInputName1">Name</label>
                   <input type="text" required minlength="5" #nameC="ngModel" [(ngModel)]="name" class="form-control"
                     id="name" name="name" maxlength="30" placeholder="Enter Name">
-                    <div class="alert alert-warning" *ngIf="nameC.invalid && ( nameC.touched || nameC.dirty )">
-                      Name is required / Minlength - 5
+                  <div class="alert alert-warning" *ngIf="nameC.invalid && ( nameC.touched || nameC.dirty )">
+                    Name is required / Minlength - 5
                   </div>
                 </div>
 
@@ -253,24 +260,26 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="email"  class="form-control" [email]="true" name="lemail" #semail="ngModel" [(ngModel)]="lemail"
-                    id="exampleInputEmail1" required aria-describedby="emailHelp" placeholder="Enter email">
-                    
+                  <input type="email" class="form-control" [email]="true" name="lemail" #semail="ngModel"
+                    [(ngModel)]="lemail" id="exampleInputEmail1" required aria-describedby="emailHelp"
+                    placeholder="Enter email">
+
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                     else.</small>
 
-                    <div class="alert alert-warning" *ngIf="semail.invalid && ( semail.touched || semail.dirty )">
-                      Enter valid email address.
-                    </div>
+                  <div class="alert alert-warning" *ngIf="semail.invalid && ( semail.touched || semail.dirty )">
+                    Enter valid email address.
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" [(ngModel)]="lpass" #cpassword_form="ngModel" required minlength="7" name="lpass" class="form-control"
-                    id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" [(ngModel)]="lpass" #cpassword_form="ngModel" required minlength="7"
+                    name="lpass" class="form-control" id="exampleInputPassword1" placeholder="Password">
 
-                    <div class="alert alert-warning" *ngIf="cpassword_form.invalid && ( cpassword_form.touched || cpassword_form.dirty )">
-                      Enter valid password
-                    </div>
+                  <div class="alert alert-warning"
+                    *ngIf="cpassword_form.invalid && ( cpassword_form.touched || cpassword_form.dirty )">
+                    Enter valid password
+                  </div>
 
                 </div>
 
@@ -278,8 +287,10 @@
 
               </div>
               <div class="modal-footer m-auto text-center">
-                <button type="button" id="closeL" class="btn btn-sm btn-block btn-secondary m-auto" data-dismiss="modal">Close</button>
-                <button type="submit" [disabled]="!loForm.form.valid" class="btn btn-block btn-sm btn-primary m-auto">Login</button>
+                <button type="button" id="closeL" class="btn btn-sm btn-block btn-secondary m-auto"
+                  data-dismiss="modal">Close</button>
+                <button type="submit" [disabled]="!loForm.form.valid"
+                  class="btn btn-block btn-sm btn-primary m-auto">Login</button>
               </div>
             </div>
           </div>

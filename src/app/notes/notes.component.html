@@ -1,9 +1,9 @@
 <div class="container container-fluid">
-    <h4 class="text-center text-justify display-3">Create Note</h4>
+    <h4 class="text-center text-justify display-3"><i class="fas fa-sticky-note text-info">&nbsp;</i>Create Note</h4>
     <hr>
     <label class="form-control-plaintext w-25 m-auto">Enter new note name:  </label>
     <input [(ngModel)]="nfilename" class="form-control m-auto w-25" required (change)="changeFlag()">
-    <button class="btn btn-block btn-outline-success w-25 m-auto" [disabled]="tempflag" (click)="create()">Create</button>
+    <button class="btn btn-block btn-outline-success w-25 m-auto" [disabled]="tempflag" (click)="create()">Create&nbsp;<i class="fas fa-plus"></i></button>
 
     <hr class="border border-dark">
     <div class="note w-100" *ngIf="uNote.length!=0"  data-aos="zoomi-in" data-aos-duration="1000">

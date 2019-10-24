@@ -19,7 +19,7 @@
             <textarea required  placeholder="This is an awesome text box" rows="10" name="text" [(ngModel)]="content" id="comment_text" cols="40" class="ui-autocomplete-input w-100 h-100 m-auto" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  ></textarea>
         </div>
        
-            <button type="submit" (click)="sendMail()" [disabled]="!detailsForm.valid" class="btn btn-primary btn-block m-auto">Send</button>
+            <button type="submit" (click)="sendMail()" [disabled]="!detailsForm.valid" class="btn btn-primary btn-block m-auto">Send&nbsp;<i class="fas fa-paper-plane"></i></button>
     </form>
     
    

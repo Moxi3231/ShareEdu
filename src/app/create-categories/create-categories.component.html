@@ -10,7 +10,7 @@
 </div>
 
 <hr>
-<h4 class="display-4 text-center">Category List</h4>
+<h4 class="display-4 text-center"><i class="fas fa-list-ul"></i>&nbsp;Category List</h4>
 <hr>
 <div class="card-columns shadow-sm">
 <div class="card" data-aos="slide-right" *ngFor="let s of clist;index as i" style="z-index: 1;" data-aos-duration="1500">
@@ -18,7 +18,7 @@
                     <h6 class="text-capitalize text-justify text-center"> {{i}}. {{s.name}} </h6>
             </div>       
             <div class="card-body">
-                <button class="btn btn-danger w-100" (click)="delete(s.name)">Delete</button>
+                <button class="btn btn-danger w-100" (click)="delete(s.name)">Delete &nbsp;<i class="fas fa-trash-alt"></i></button>
             </div>
             <br *ngIf="i%4==0">
 </div>

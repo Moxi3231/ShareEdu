@@ -66,13 +66,13 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          Explore
+          <i class="fas fa-book-reader "></i>&nbsp; Explore
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/Categories">Categories</a>
-          <a class="dropdown-item" href="/SubscribeCategory">Subscribe Category</a>
+          <a class="dropdown-item" href="/Categories"> <i class="fas fa-video "></i>&nbsp; Categories</a>
+          <a class="dropdown-item" href="/SubscribeCategory"> <i class="fas fa-file-signature "></i>&nbsp;Subscribe Category</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/Home">Home</a>
+          <a class="dropdown-item" href="/Home"> <i class="fas fa-home "></i>&nbsp;Home</a>
         </div>
       </li>
     </ul>
@@ -85,14 +85,14 @@
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-outline-info btn-sm extend" data-toggle="modal"
       data-target="#exampleModalCenter1">
-      Login
+      Login&nbsp; <i class="fas fa-user-plus "></i>
     </button>
-
+    
     <!-- Modal -->
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-info btn-sm extend" data-toggle="modal"
-      data-target="#exampleModalCenter2">
+    <button type="button"  class="btn btn-outline-info btn-sm extend" data-toggle="modal"
+      data-target="#exampleModalCenter2" style="display: none;">
       SignUp
     </button>
 
@@ -101,9 +101,10 @@
   </div>
   <div *ngIf="loggedIN">
     <div class="input-group-append">
+        
       <button type="button" [disabled]="true" class="btn btn-lg  btn-outline-info  badge-info border-0"
         style="border:none;">
-        {{ uname }}
+        <i class="fas fa-user-cog "></i> {{ uname }}
       </button>
       <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" style="border: none;"
         data-toggle="collapse" data-target="#aDetails" aria-haspopup="true" aria-expanded="false">
@@ -117,29 +118,29 @@
 
 <div class="collapse w-100 m-auto shadow-lg bg-light position-fixed " style="z-index:6;" id="aDetails">
   <a class="btn-link btn btn-outline-light  btn-block text-center " style="border: none; padding: 0;"
-    href="/AccountDetails">Account Details</a>
+    href="/AccountDetails">Account Details&nbsp;&nbsp; <i class="fas fa-user-edit text-dark"></i></a>
   <div role="separator" class="dropdown-divider bg-light"></div>
   <a class="btn-link btn btn-block  btn-outline-light text-center" style="border: none; padding: 0;" href="/Home"
-    (click)="logout()">Logout</a>
+    (click)="logout()">Logout &nbsp;&nbsp;<i class="fas fa-sign-out-alt text-dark"></i></a>
 </div>
 
 <div id="mySidenav" class="sidenav" style="z-index: 10;">
-  <h6  class="text-center text-white text-justify display-3">User</h6>
-  <a routerLink="/Categories">Categories</a>
-  <a routerLink="/SubscribeCategory">Subscribe Category</a>
-  <a routerLink="/TextbookView">TextBooks</a>
-  <a routerLink="/Notes">Make Notes</a>
-  <a routerLink="/Home">Home</a>
+  <h6  class="text-center text-white text-justify display-3">User&nbsp;<i class="fas fa-user"></i>&nbsp;</h6>
+  <a routerLink="/Categories"><i class="fas fa-video "></i>&nbsp;Categories</a>
+  <a routerLink="/SubscribeCategory"><i class="fas fa-file-signature "></i>&nbsp;Subscribe Category</a>
+  <a routerLink="/TextbookView"><i class="fas fa-book "></i>&nbsp;TextBooks</a>
+  <a routerLink="/Notes"><i class="fas fa-sticky-note "></i>&nbsp;Make Notes</a>
+  <a routerLink="/Home"><i class="fas fa-home "></i>&nbsp;Home</a>
 </div>
 
 <div id="mySidenavR" class="sidenavR">
   <a id="nstyle" href="javascript:void(0)" class="closebtn" on-click="closeNav()">&times;</a>
-  <h6 class="text-center text-white text-justify display-3">Admin</h6>
-  <a routerLink="/AssignAdmin">Assign Admin</a>
-  <a routerLink="/ACreateCategories">Categories</a>
-  <a routerLink="/AVideo">Videos</a>
-  <a routerLink="/ATextbook">Books</a>
-  <a href="/SendEmail">Send Mail</a>
+  <h6 class="text-center text-white text-justify display-3">Admin <i class="fas fa-user-shield "></i>&nbsp;</h6>
+  <a routerLink="/AssignAdmin">Assign Admin <i class="fas fa-user-shield "></i></a>
+  <a routerLink="/ACreateCategories">Categories <i class="fas fa-plus "></i>&nbsp;</a>
+  <a routerLink="/AVideo">Videos <i class="fas fa-video "></i>&nbsp;</a>
+  <a routerLink="/ATextbook">Books <i class="fas fa-file-upload "></i>&nbsp;</a>
+  <a href="/SendEmail">Send Mail <i class="fas fa-envelope "></i>&nbsp;</a>
 
 </div>
 
@@ -150,12 +151,12 @@
 
   <!-- Overlay content -->
   <div class="overlay-content" data-aos="slide-down">
-    <a id="a" class="dropdown-item" routerLink="/Categories">Categories</a>
-    <a id="a" class="dropdown-item" routerLink="/TextbookView">Textbooks</a>
-    <a id="a" class="dropdown-item" routerLink="/Notes">Make Notes</a>
+    <a id="a" class="dropdown-item" routerLink="/Categories"><i class="fas fa-video "></i>&nbsp;Categories</a>
+    <a id="a" class="dropdown-item" routerLink="/TextbookView"><i class="fas fa-book "></i>&nbsp;Textbooks</a>
+    <a id="a" class="dropdown-item" routerLink="/Notes"><i class="fas fa-sticky-note "></i>&nbsp;Make Notes</a>
     <div class="dropdown-divider"></div>
-    <a id="a" class="dropdown-item" routerLink="/SubscribeCategory">Subscribe Category</a>
-    <a id="a" class="dropdown-item" routerLink="/Home">Home</a>
+    <a id="a" class="dropdown-item" routerLink="/SubscribeCategory"><i class="fas fa-file-signature "></i>&nbsp;Subscribe Category</a>
+    <a id="a" class="dropdown-item" routerLink="/Home"><i class="fas fa-home "></i>&nbsp;Home</a>
   </div>
 
 </div>

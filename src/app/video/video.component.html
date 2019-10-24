@@ -16,7 +16,7 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="File">Upload File</label>
+        <label for="File">Upload File&nbsp;<i class="fas fa-file-upload"></i></label>
         <input type="file" required class="form-control" id="File" (change)="upload($event.target.files)" />
         <input type="hidden" value="{{ filename }}">
         
@@ -55,7 +55,7 @@
                 <td>{{s.path}}</td>
                 <td>{{s.description}}</td>
                 <td>{{s.category}}</td>
-                <td><button class="btn btn-sm btn-block btn-danger" (click)="deletePath(s.name)">Delete</button></td>
+                <td><button class="btn btn-sm btn-block btn-danger" (click)="deletePath(s.name)">Delete&nbsp;<i class="fas fa-trash-alt"></i></button></td>
             </tr>
         </tbody>
     </table>

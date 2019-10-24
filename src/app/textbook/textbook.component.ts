@@ -80,6 +80,10 @@ export class TextbookComponent implements OnInit {
     }
   }
   public show(path: string) {
+    $("#errContent").addClass("alert alert-success");
+    $("#errHeading").html("Opening");
+    $("#errContent").html("Scroll through book");
+    $("#errTrigger").trigger('click');
     this.toogleTextbook = true;
     this.filePath = path;
   }

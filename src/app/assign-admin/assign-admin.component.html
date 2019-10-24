@@ -30,8 +30,8 @@
           <tr *ngFor="let user of Admin;index as i" data-aos="zoom-out"> 
             <th scope="row">{{i}}</th>
             <td>{{user.email}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.isAdmin}}</td>
+            <td><i class="fas fa-user-shield "></i>&nbsp;{{user.name}} </td>
+            <td>&nbsp;<i class="fas fa-check-double "></i></td>
             <td>
                 <button class="btn btn-danger btn-block btn-sm" [disabled]="user.email=='moxankpatel@gmail.com'" (click)="removeAdmin(user.email)">Delete</button>
             </td>

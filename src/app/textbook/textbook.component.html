@@ -13,7 +13,7 @@
     Please select course from above
   </div>
   <div *ngIf="tempFlag" data-aos="slide-down">
-    <p class="m-auto card-header d-block display-4 text-center"><small>Textbooks for<span>
+       <p class="m-auto card-header d-block display-4 text-center"><small><i class="fas fa-book "></i>&nbsp;Textbooks for<span>
           <p style="color: darkcyan; "> {{pageCourse}}</p>
         </span></small> </p>
     <table id="customers" class="table table-hover table-striped shadow-lg bg-light" data-aos="fade-in"
@@ -33,13 +33,13 @@
           <td>{{item.Name}}</td>
           <td>{{item.Description}}</td>
           <td>{{item.Author}}</td>
-          <td><button class="btn btn-block btn-sm btn-outline-secondary" (click)="show(item.Path)">Show</button></td>
+          <td><button class="btn btn-block btn-sm btn-outline-secondary" (click)="show(item.Path)"><i class="fas fa-eye "></i>&nbsp;Show</button></td>
         </tr>
       </tbody>
     </table>
 
     
-      <div class="alert alert-danger text-center" *ngIf="!toogleTextbook">
+      <div class="alert alert-danger text-center" *ngIf="!toogleTextbook && !noTextbook">
         Click on show from any of the above textbooks.
       </div>
     <ng-template #elseBLC class="card bg-transparent font-weight-lighter alert-danger alert">

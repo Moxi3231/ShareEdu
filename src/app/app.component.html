@@ -1,9 +1,9 @@
 <html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <button id="errTrigger" onclick="showToast()"></button>
@@ -13,39 +13,43 @@
 </router-outlet>
 
 <div class="div1" id="contentBack"
-    style="top:0px; background-color: rgb(69,195,184);background-position-x:200px ; background-image: url('../assets/Image/Edu.jpg'); background-repeat: no-repeat;">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <a class="btn btn-outline-info btn-block btn-lg text-white" href="/Home">Home</a>
+  style="top:0px; background-color: rgb(69,195,184);background-position-x:200px ; background-image: url('../assets/Image/Edu.jpg'); background-repeat: no-repeat;">
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <a class="btn btn-outline-info btn-block btn-lg text-white" href="/Home">Home</a>
 
 </div>
 
 
-    <div data-aos="slide-up" id="err" class="toast w-100 text-black-50 bg-white  shadow-lg" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="10000" style="position: fixed; z-index: 6;  bottom: 10px; right: 10px; ">
-        <div class="toast-header text-black-50 bg-transparent">
-            <img height="25px" width="25px" src="../assets/Image/ShareEd.png" class="rounded mr-2" alt="...">
-            <strong class="mr-auto" id="errHeading"></strong>
-            <small class="text-muted text-justify text-white">just now</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body bg-transparent text-black-50" id="errContent">
+<div data-aos="slide-up" id="err" class="toast w-100 text-black-50 bg-white  shadow-lg" role="alert"
+  aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="10000"
+  style="position: fixed; z-index: 6;  bottom: 10px; right: 10px; ">
+  <div class="toast-header text-black-50 bg-transparent">
+    <img height="25px" width="25px" src="../assets/Image/ShareEd.png" class="rounded mr-2" alt="...">
+    <strong class="mr-auto" id="errHeading"></strong>
+    <small class="text-muted text-justify text-white">just now</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body bg-transparent text-black-50" id="errContent">
 
-        </div>
-    </div>
+  </div>
+</div>
 <hR style="color:white;">
-    <footer  id="footer" class="footer footer-nav text-justify w-100  shadow"  style=" bottom: 0px; position: static;">
-            <div class="row text-center"> 
-            <div class="col-12 m-auto">  
-              &copy;SharedED, Inc. 2019
-            </div>
-            </div>
-            <hr>
-            <div class="row text-center bg-light">
-            <div class="col-4"><a href="#">Help</a></div>
-            <div class="col-4"><a routerLink="/ContactUs">Contact Us</a>
-            </div>
-            <div class="col-4"><a routerLink="/Terms">Terms &
-                Condition</a></div></div>
-          </footer>
+<footer id="footer" class="footer footer-nav text-justify w-100  shadow" style=" bottom: 0px; position: static;">
+  <div class="row text-center">
+    <div class="col-12 m-auto">
+      <strong> &copy;SharedED, Inc. 2019</strong>
+    </div>
+  </div>
+  <hr>
+  <div class="row text-center ">
+    <div class="col-4"><a href="#">Help</a></div>
+    <div class="col-4"><a routerLink="/ContactUs">Contact Us</a>
+    </div>
+    <div class="col-4"><a routerLink="/Terms">Terms &
+        Condition</a></div>
+  </div>
+</footer>
+
 </html>

@@ -11,7 +11,7 @@
             <option *ngFor="let item of uNote" value={{item.Name}} >{{item.Name}}</option>
         </select>
         <hr>
-        <textarea  data-aos="slide-up" data-aos-duration="1000" *ngIf="selected" (change)="updateText()" placeholder="This is an awesome comment box" rows="20" name="text" [(ngModel)]="content" id="comment_text" cols="40" class="ui-autocomplete-input w-100 h-100 m-auto" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  ></textarea>
+        <textarea  data-aos="slide-up" data-aos-duration="1000" *ngIf="selected" (change)="updateText()" placeholder="This is an awesome comment box" rows="20" name="text" [(ngModel)]="content" id="comment_text" cols="40" class="shadow-lg ui-autocomplete-input w-100 h-100 m-auto" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  ></textarea>
         <button class="btn btn-block mce-btn-large btn-danger" *ngIf="selected" (click)="deleteNote()">Delete</button>
         <div class="alert alert-info text-center" *ngIf="!selected">Select note from above.</div>
     </div>

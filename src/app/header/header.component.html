@@ -29,10 +29,7 @@
 
   }
 
-  .clink:hover{
-   padding-right:10px ;
-    font-size: 150%;
-  }
+
 
   #Modal {
     position: relative;
@@ -43,6 +40,7 @@
     width: 100%;
     z-index: 5;
   }
+
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm bg-dark  position-sticky border-bottom border-dark"
   id="hMain">
@@ -54,14 +52,14 @@
     <span id="imageHere" style="font-size:30px;cursor:pointer" (click)="openNavForUser()">&#9776;</span>
   </div>
   &nbsp;&nbsp;
-  
-  
+
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
- 
+
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -78,9 +76,9 @@
         </div>
       </li>
     </ul>
-<div class="form-inline w-75 mx-5 px-5 " data-aos="zoom-in" data-aos-duration="2500">
-    <a class="navbar-brand nav-link   text-justify w-50 m-auto clink"  routerLink="/Home">【ＳｈａｒｅＥｄｕ】</a>
-  </div>
+    <div class="form-inline w-75 mx-5 px-5 " data-aos="zoom-in" data-aos-duration="2500">
+      <a class="navbar-brand nav-link   text-justify w-50 m-auto clink" routerLink="/Home">【ＳｈａｒｅＥｄｕ】</a>
+    </div>
   </div>
   <div id="login" *ngIf="!loggedIN">
 
@@ -126,7 +124,7 @@
 </div>
 
 <div id="mySidenav" class="sidenav" style="z-index: 10;">
-  <h6 class="text-center text-white text-justify display-3">User</h6>
+  <h6  class="text-center text-white text-justify display-3">User</h6>
   <a routerLink="/Categories">Categories</a>
   <a routerLink="/SubscribeCategory">Subscribe Category</a>
   <a routerLink="/TextbookView">TextBooks</a>
@@ -151,7 +149,7 @@
   <a href="javascript:void(0)" class="closebtn" (click)="closeNavForUser()">&times;</a>
 
   <!-- Overlay content -->
-  <div class="overlay-content">
+  <div class="overlay-content" data-aos="slide-down">
     <a id="a" class="dropdown-item" routerLink="/Categories">Categories</a>
     <a id="a" class="dropdown-item" routerLink="/TextbookView">Textbooks</a>
     <a id="a" class="dropdown-item" routerLink="/Notes">Make Notes</a>

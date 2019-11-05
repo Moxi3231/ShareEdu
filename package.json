@@ -24,7 +24,7 @@
     "cors": "^2.8.5",
     "formidable": "^1.2.1",
     "jquery": "^3.4.1",
-    "mongoose": "^5.7.4",
+    "mongoose": "^5.7.5",
     "ng2-pdf-viewer": "^6.0.1",
     "ngx-cookie-service": "^2.2.0",
     "ngx-extended-pdf-viewer": "^1.6.0",

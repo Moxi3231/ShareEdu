@@ -40,8 +40,8 @@ export class TextbookComponent implements OnInit {
 
   ngOnInit() {
     $("#contentBack").remove();
-    // $("body").css({ background: 'linear-gradient(to right,#83a4d4, #b6fbff)'});
-
+    $("body").css({ background: 'linear-gradient(to right,#83a4d4, #b6fbff)'});
+    this.clist=[];
     var x = this.Cookie.get('LoggedIN');
     if (x == 'true') {
       this.obj = JSON.parse(this.Cookie.get('User'));

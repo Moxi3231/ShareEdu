@@ -172,7 +172,7 @@
           <h6 class="modal-title font-italic" id="exampleModalCenterTitle">Registration</h6>
           <button type="button" id="openL" class="btn btn-light btn-link" data-dismiss="modal" data-toggle="modal"
             data-target="#exampleModalCenter1">
-            Switch To Login
+            Switch To Login&nbsp;<i class="fas fa-sign-in-alt"></i>
           </button>
         </div>
         <form (ngSubmit)="onRSubmit()" #regForm="ngForm">
@@ -184,7 +184,7 @@
               <div class="modal-body">
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label for="exampleInputEmail1"><i class="fas fa-asterisk  text-danger"></i>&nbsp;Email address</label>
                   <input type="email" class="form-control" id="SEmail" #femail="ngModel" [email]="true" name="email"
                     required [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
                   <div class="alert alert-warning" *ngIf="femail.invalid && ( femail.touched || femail.dirty )">
@@ -194,7 +194,7 @@
 
 
                 <div class="form-group row-2">
-                  <label for="exampleInputPassword1 col-6">Password</label>
+                  <label for="exampleInputPassword1 col-6"><i class="fas fa-asterisk  text-danger"></i>&nbsp;Password</label>
 
 
                   <input type="password" class="form-control " name="password" [(ngModel)]="password" required
@@ -213,7 +213,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleInputName1">Name</label>
+                  <label for="exampleInputName1"><i class="fas fa-asterisk  text-danger"></i>&nbsp;Name</label>
                   <input type="text" required minlength="5" #nameC="ngModel" [(ngModel)]="name" class="form-control"
                     id="name" name="name" maxlength="30" placeholder="Enter Name">
                   <div class="alert alert-warning" *ngIf="nameC.invalid && ( nameC.touched || nameC.dirty )">
@@ -244,7 +244,7 @@
           <h6 class="modal-title font-italic" id="exampleModalCenterTitle">Login</h6>
           <button type="button" class="btn btn-link btn-light" data-dismiss="modal" data-toggle="modal"
             data-target="#exampleModalCenter2">
-            Switch To SignUp
+            Switch To SignUp&nbsp;<i class="fas fa-user-plus"></i>
           </button>
         </div>
         <form (ngSubmit)="onLSubmit()" #loForm="ngForm">
@@ -258,7 +258,7 @@
 
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label for="exampleInputEmail1"><i class="fas fa-asterisk  text-danger"></i>&nbsp;Email address</label>
                   <input type="email" class="form-control" [email]="true" name="lemail" #semail="ngModel"
                     [(ngModel)]="lemail" id="exampleInputEmail1" required aria-describedby="emailHelp"
                     placeholder="Enter email">
@@ -271,7 +271,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
+                  <label for="exampleInputPassword1"><i class="fas fa-asterisk  text-danger"></i>&nbsp;Password</label>
                   <input type="password" [(ngModel)]="lpass" #cpassword_form="ngModel" required minlength="7"
                     name="lpass" class="form-control" id="exampleInputPassword1" placeholder="Password">
 
